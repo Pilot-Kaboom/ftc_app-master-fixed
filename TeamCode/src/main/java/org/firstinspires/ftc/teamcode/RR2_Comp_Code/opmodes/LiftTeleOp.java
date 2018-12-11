@@ -1,6 +1,8 @@
-package org.firstinspires.ftc.teamcode.RR2_Comp_Code;
+package org.firstinspires.ftc.teamcode.RR2_Comp_Code.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.teamcode.RR2_Comp_Code.superclasses.RR2_LiftBot;
 
 @TeleOp(name="LiftTele", group="Tele1")
 public class LiftTeleOp extends RR2_LiftBot {

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.RR2_Comp_Code;
+package org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses;
 import org.firstinspires.ftc.teamcode.New_Test_Code.mecanumBotHard;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;

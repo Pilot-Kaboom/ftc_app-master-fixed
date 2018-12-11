@@ -1,8 +1,8 @@
-package org.firstinspires.ftc.teamcode.RR2_Comp_Code;
+package org.firstinspires.ftc.teamcode.RR2_Comp_Code.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.teamcode.RR2_Comp_Code.superclasses.RR2_LiftBot;
 
 
 @Autonomous(name="do not use", group="Auto1")

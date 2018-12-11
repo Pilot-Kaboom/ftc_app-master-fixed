@@ -1,6 +1,8 @@
-package org.firstinspires.ftc.teamcode.RR2_Comp_Code;
+package org.firstinspires.ftc.teamcode.RR2_Comp_Code.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
+import org.firstinspires.ftc.teamcode.RR2_Comp_Code.superclasses.RR2_LiftBot;
 
 @Autonomous(name="just land and park", group="Auto1")
 public class JustLand extends RR2_LiftBot {

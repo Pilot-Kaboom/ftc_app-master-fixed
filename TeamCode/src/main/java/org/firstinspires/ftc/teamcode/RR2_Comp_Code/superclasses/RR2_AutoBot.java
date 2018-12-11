@@ -1,13 +1,18 @@
-package org.firstinspires.ftc.teamcode.RR2_Comp_Code;
+package org.firstinspires.ftc.teamcode.RR2_Comp_Code.superclasses;
 
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
+import org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses.Arm;
+import org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses.Drive;
+import org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses.collecter;
+import org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses.lift;
+import org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses.sensors;
 import org.firstinspires.ftc.teamcode.vision.MasterVision;
 import org.firstinspires.ftc.teamcode.vision.SampleRandomizedPositions;
 
 public abstract class RR2_AutoBot extends SuperSuperClass {
 
-    public  Arm arm;
-    public  Drive drive;
+    public Arm arm;
+    public Drive drive;
     public collecter collect;
     public lift lifter;
     public sensors sense;

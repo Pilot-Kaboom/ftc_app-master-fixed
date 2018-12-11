@@ -1,10 +1,12 @@
-package org.firstinspires.ftc.teamcode.RR2_Comp_Code;
+package org.firstinspires.ftc.teamcode.RR2_Comp_Code.superclasses;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
+import org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses.Drive;
+import org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses.lift;
+import org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses.sensors;
 
 public abstract class RR2_LiftBot extends SuperSuperClass {
 
-    public  Drive drive;
+    public Drive drive;
     public lift lifter;
     public sensors sense;
     //public DcMotor vert;
