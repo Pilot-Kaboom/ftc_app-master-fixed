@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.RR2_Comp_Code;
+package org.firstinspires.ftc.teamcode.Oldish_used_code;
 
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
@@ -11,8 +11,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
-import org.firstinspires.ftc.teamcode.RR2_Comp_Code.GyroMethods;
-import org.firstinspires.ftc.teamcode.RR2_Comp_Code.Updatable;
+import org.firstinspires.ftc.teamcode.Oldish_used_code.GyroMethods;
+import org.firstinspires.ftc.teamcode.Oldish_used_code.Updatable;
 
 import static java.lang.Math.toRadians;
 import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGREES;

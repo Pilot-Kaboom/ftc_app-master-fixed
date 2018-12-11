@@ -5,9 +5,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.teamcode.RR2_Comp_Code.LoopingRevGyro;
-import org.firstinspires.ftc.teamcode.RR2_Comp_Code.UpdatingManager;
-
 import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGREES;
 
 
