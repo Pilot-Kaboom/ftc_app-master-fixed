@@ -258,7 +258,6 @@ public class AutoJustLandSample extends RR2_LiftBot {
                 telemetry.addData("gold on center",1);
                 telemetry.update();
             }
-
             drive.StopMotors(0);
             drive.resetEC();
             while(opModeIsActive() && drive.bect() < 1500){
