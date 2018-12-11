@@ -17,8 +17,8 @@ public abstract class RR2_AutoBot extends SuperSuperClass {
     public lift lifter;
     public sensors sense;
     public boolean doit;
-    MasterVision vision;
-    SampleRandomizedPositions goldPosition;
+    public MasterVision vision;
+    public SampleRandomizedPositions goldPosition;
 
     @Override
     public void initiate(){
