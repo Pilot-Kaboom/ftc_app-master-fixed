@@ -100,7 +100,7 @@ public class sensors {
     }
     public void sensortelem(){
         sense.telemetry.addData("white", white());
-        sense.telemetry.addData("white", bucketDis());
+        sense.telemetry.addData("white dis", bucketDis());
         /*
         sense.telemetry.addData("colorL", colorL());
         sense.telemetry.addData("colorR", colorR());
