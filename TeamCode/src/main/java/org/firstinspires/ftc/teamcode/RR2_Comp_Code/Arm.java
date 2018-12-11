@@ -44,14 +44,12 @@ public class Arm {
     }
 
     public void hin(double hin, double dis, boolean goit){
-        if(dis > 35 && dis < 45 && goit){
-            hori.setPower(.15+hin);
+
+        if(!goit && dis > 45){
+            hori.setPower(.7+hin);
         }
-        else if(goit && dis > 45){
-            hori.setPower(.6+hin);
-        }
-        else if(dis<35 && goit){
-            hori.setPower(-.15+hin);
+        else if(dis<35 && !goit){
+            hori.setPower(-.25+hin);
         }
         else{
             hori.setPower(.15+hin);
