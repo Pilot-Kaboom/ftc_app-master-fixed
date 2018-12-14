@@ -265,6 +265,52 @@ public class Auto3 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         time.reset();
+
+        while(opModeIsActive() && sense.rearD()> 12){
+            if(sense.sideD()>4){
+                drive.teledrive(-.75,-.75,0,0);
+            }
+            else if(sense.sideD()<2){
+                drive.teledrive(-.75,.75,0,0);
+            }
+            else{
+                drive.teledrive(-.75,0,0,0);
+            }
+            telemetry.addData("driving to depot",1);
+            telemetry.update();
+        }
+        time.reset();
         drive.StopMotors(0);
+        sense.teammarker(1);
+        while(opModeIsActive() && time.seconds()< 3 ){
+            if(sense.sideD()>4){
+                drive.teledrive(.75,-.75,0,0);
+            }
+            else if(sense.sideD()<2){
+                drive.teledrive(.75,.75,0,0);
+            }
+            else{
+                drive.teledrive(.75,0,0,0);
+            }
+            telemetry.addData("driving to crater",1);
+            telemetry.update();
+        }
+        while(opModeIsActive() && sense.frontD()> 52){
+            if(sense.sideD()>4){
+                drive.teledrive(.25,-.5,0,0);
+            }
+            else if(sense.sideD()<2){
+                drive.teledrive(.25,.25,0,0);
+            }
+            else{
+                drive.teledrive(.25,0,0,0);
+            }
+            telemetry.addData("driving into crater",1);
+            telemetry.update();
+        }
+        while(opModeIsActive()&& time.seconds() <.5){
+            drive.teledrive(.5,-.5,0,0);
+        }
     }
+
 }

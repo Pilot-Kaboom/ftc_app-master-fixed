@@ -23,8 +23,10 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 public class sensors {
 
-    private final DistanceSensor Bd;
+    private final DistanceSensor Rd;
     private final DistanceSensor Sd;
+    private final DistanceSensor Fd;
+    private final DistanceSensor Bd;
     /*private final ColorSensor Rc;
     private final ColorSensor Lc;
     private final TouchSensor backtouch;
@@ -38,8 +40,10 @@ public class sensors {
    // private Orientation angle;
     private final LinearOpMode sense;
     public sensors(LinearOpMode sense){
-        Bd = sense.hardwareMap.get(DistanceSensor.class, "bd");
+        Rd = sense.hardwareMap.get(DistanceSensor.class, "bd");
         Sd = sense.hardwareMap.get(DistanceSensor.class, "sd");
+        Fd = sense.hardwareMap.get(DistanceSensor.class, "frontd");
+        Bd = sense.hardwareMap.get(DistanceSensor.class, "backd");
         /*Rc = sense.hardwareMap.colorSensor.get("rcd");
         Rd = sense.hardwareMap.opticalDistanceSensor.get("rcd");
         backtouch = sense.hardwareMap.touchSensor.get("backtouch");
@@ -68,10 +72,16 @@ public class sensors {
 
     //public double angular(){return formatAngle(sense.angle.angleUnit, sense.angle.firstAngle)}
     public double backD(){
-        return (Bd.getDistance(DistanceUnit.INCH));
+        return (Rd.getDistance(DistanceUnit.INCH));
     }
     public double sideD(){
         return (Sd.getDistance(DistanceUnit.INCH));
+    }
+    public double frontD(){
+        return (Fd.getDistance(DistanceUnit.INCH));
+    }
+    public double rearD(){
+        return (Bd.getDistance(DistanceUnit.INCH));
     }
     /*
     public double colorR(){
