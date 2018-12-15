@@ -119,6 +119,8 @@ public class sensors {
         sense.telemetry.addData("touch", touch());*/
         sense.telemetry.addData("sideD", sideD());
         sense.telemetry.addData("backD", backD());
+        sense.telemetry.addData("frontD", frontD());
+        sense.telemetry.addData("rearD", rearD());
 
         sense.telemetry.update();
     }
