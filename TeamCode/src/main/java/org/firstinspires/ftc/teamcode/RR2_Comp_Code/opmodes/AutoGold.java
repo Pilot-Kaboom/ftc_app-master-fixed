@@ -20,11 +20,8 @@ public class AutoGold extends RR2_AutoBot {
 
         drive.resetEC();
         //drop
-        while (opModeIsActive() && time.seconds() <1){
-            lifter.LiftOps(-1);
-            doit=true;
-        }
-        while (opModeIsActive() && time.seconds() < 2){
+
+        while (opModeIsActive() && time.seconds() < 3){
             lifter.LiftOps(1);
 
         }

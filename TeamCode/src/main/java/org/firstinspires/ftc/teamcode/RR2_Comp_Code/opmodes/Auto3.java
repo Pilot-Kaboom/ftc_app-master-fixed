@@ -20,11 +20,8 @@ public class Auto3 extends RR2_AutoBot {
 
         drive.resetEC();
         //drop
-        while (opModeIsActive() && time.seconds() <.5){
-            lifter.LiftOps(-1);
-            doit=true;
-        }
-        while (opModeIsActive() && time.seconds() < 2){
+
+        while (opModeIsActive() && time.seconds() < 3){
             lifter.LiftOps(1);
 
         }
@@ -277,14 +274,15 @@ public class Auto3 extends RR2_AutoBot {
                 drive.teledrive(.75,0,0,0);
             }
             telemetry.addData("driving to depot",1);
-            telemetry.update();
+            sense.sensortelem();
+
         }
         time.reset();
         drive.StopMotors(0);
         drive.resetEC();
         sense.teammarker(1);
         sleep(500);
-        while(opModeIsActive() && time.seconds()< 3 ){
+        /*while(opModeIsActive() && time.seconds()< 3 ){
             if(sense.sideD()>4){
                 drive.teledrive(-.75,-.75,0,0);
             }
@@ -312,7 +310,7 @@ public class Auto3 extends RR2_AutoBot {
         }
         while(opModeIsActive()&& time.seconds() <.5){
             drive.teledrive(.5,-.5,0,0);
-        }
+        }*/
     }
 
 }
