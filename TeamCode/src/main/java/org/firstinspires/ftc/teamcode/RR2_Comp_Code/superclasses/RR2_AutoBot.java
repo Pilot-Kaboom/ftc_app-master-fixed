@@ -27,6 +27,7 @@ public abstract class RR2_AutoBot extends SuperSuperClass {
         collect = new collecter(hardwareMap);
         lifter = new lift(hardwareMap);
         sense = new sensors(this);
+        doit = true;
 
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;// recommended camera direction
