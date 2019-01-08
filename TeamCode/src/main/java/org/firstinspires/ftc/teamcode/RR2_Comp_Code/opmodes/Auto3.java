@@ -28,7 +28,7 @@ public class Auto3 extends RR2_AutoBot {
         lifter.LiftOps(0);
         drive.resetEC();
         //move off of hook
-        while(opModeIsActive() && drive.bect() <350 ){
+        while(opModeIsActive() && drive.bect() <300 ){
             drive.goForward(-.5);
         }
         time.reset();
@@ -160,7 +160,7 @@ public class Auto3 extends RR2_AutoBot {
             drive.StopMotors(0);
             drive.resetEC();
             sleep(500);
-            while(opModeIsActive() && drive.fect() < 500){
+            while(opModeIsActive() && drive.fect() < 400){
                 drive.goForward(.5);
                 telemetry.addData("do it", doit);
                 telemetry.addData("gold on center, saw C",1);
