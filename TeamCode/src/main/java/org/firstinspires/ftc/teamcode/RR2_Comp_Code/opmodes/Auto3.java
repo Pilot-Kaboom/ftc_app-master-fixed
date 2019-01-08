@@ -36,7 +36,7 @@ public class Auto3 extends RR2_AutoBot {
             drive.StopMotors(0);
         }
         //drive to minerals
-        while(opModeIsActive() && sense.backD() < 17){
+        while(opModeIsActive() && sense.backD() < 16){
             drive.goRight(-.65);
             sense.sensortelem();
 
@@ -45,13 +45,13 @@ public class Auto3 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         //hit the correct mineral
-        while (opModeIsActive() && doit && goldPosition == SampleRandomizedPositions.LEFT){
+        while (opModeIsActive() && doit && goldPosition == SampleRandomizedPositions.RIGHT){
             /*while(opModeIsActive() && drive.rect() < 50){
                 drive.goRight(.5);
                 drive.ECtelem();
             }*/
             telemetry.addData("do it", doit);
-            telemetry.addData("gold on right, saw L",1);
+            telemetry.addData("gold on right, saw r",1);
             telemetry.update();
             doit = false;
             drive.StopMotors(0);
@@ -60,7 +60,7 @@ public class Auto3 extends RR2_AutoBot {
             while(opModeIsActive() && drive.fect() < 1500){
                 drive.goForward(.5);
                 telemetry.addData("do it", doit);
-                telemetry.addData("gold on right, saw L",1);
+                telemetry.addData("gold on right, saw r",1);
                 telemetry.update();
 
             }
@@ -70,7 +70,7 @@ public class Auto3 extends RR2_AutoBot {
             while(opModeIsActive() && drive.lect() < 700){
                 drive.goRight(-.75);
                 telemetry.addData("do it", doit);
-                telemetry.addData("gold on right, saw L",1);
+                telemetry.addData("gold on right, saw r",1);
                 telemetry.update();
 
             }
@@ -89,7 +89,7 @@ public class Auto3 extends RR2_AutoBot {
             while(opModeIsActive() && drive.bect() < 2250){
                 drive.goForward(-.75);
                 telemetry.addData("do it", doit);
-                telemetry.addData("gold on right, saw L",1);
+                telemetry.addData("gold on right, saw r",1);
                 telemetry.update();
 
             }
@@ -97,13 +97,13 @@ public class Auto3 extends RR2_AutoBot {
             drive.resetEC();
         }
         time.reset();
-        while(opModeIsActive() && doit && goldPosition == SampleRandomizedPositions.RIGHT){
+        while(opModeIsActive() && doit && goldPosition == SampleRandomizedPositions.LEFT){
             /*while(opModeIsActive() && drive.rect() < 50){
                 drive.goRight(.5);
                 drive.ECtelem();
             }*/
             telemetry.addData("do it", doit);
-            telemetry.addData("gold on left, saw R",1);
+            telemetry.addData("gold on left, saw L",1);
             telemetry.update();
             doit = false;
             drive.StopMotors(0);
@@ -112,7 +112,7 @@ public class Auto3 extends RR2_AutoBot {
             while(opModeIsActive() && drive.bect() < 500){
                 drive.goForward(-.5);
                 telemetry.addData("do it", doit);
-                telemetry.addData("gold on left, saw R",1);
+                telemetry.addData("gold on left, saw L",1);
                 telemetry.update();
 
             }
@@ -122,7 +122,7 @@ public class Auto3 extends RR2_AutoBot {
             while(opModeIsActive() && drive.lect() < 500){
                 drive.goRight(-.75);
                 telemetry.addData("do it", doit);
-                telemetry.addData("gold on left, saw R",1);
+                telemetry.addData("gold on left, saw L",1);
                 telemetry.update();
 
             }
@@ -132,7 +132,7 @@ public class Auto3 extends RR2_AutoBot {
             while(opModeIsActive() && drive.rect() < 600){
                 drive.goRight(.75);
                 telemetry.addData("do it", doit);
-                telemetry.addData("gold on left, saw R",1);
+                telemetry.addData("gold on left, saw l",1);
                 telemetry.update();
 
             }
@@ -142,7 +142,7 @@ public class Auto3 extends RR2_AutoBot {
             while(opModeIsActive() && drive.bect() < 600){
                 drive.goForward(-.5);
                 telemetry.addData("do it", doit);
-                telemetry.addData("gold on left, saw R",1);
+                telemetry.addData("gold on left, saw l",1);
                 telemetry.update();
 
             }
@@ -160,7 +160,7 @@ public class Auto3 extends RR2_AutoBot {
             drive.StopMotors(0);
             drive.resetEC();
             sleep(500);
-            while(opModeIsActive() && drive.fect() < 400){
+            while(opModeIsActive() && drive.fect() < 300){
                 drive.goForward(.5);
                 telemetry.addData("do it", doit);
                 telemetry.addData("gold on center, saw C",1);
@@ -209,7 +209,7 @@ public class Auto3 extends RR2_AutoBot {
             drive.StopMotors(0);
             drive.resetEC();
             sleep(500);
-            while(opModeIsActive() && drive.fect() < 500){
+            while(opModeIsActive() && drive.fect() < 300){
                 drive.goForward(.5);
                 telemetry.addData("do it", doit);
                 telemetry.addData("gold not found, going for center",1);
@@ -268,10 +268,10 @@ public class Auto3 extends RR2_AutoBot {
         time.reset();
 
         while(opModeIsActive() && time.seconds()<3.5){
-            if(sense.sideD()>5){
+            if(sense.sideD()>4){
                 drive.teledrive(.75,-.75,0,0);
             }
-            else if(sense.sideD()<4){
+            else if(sense.sideD()<3){
                 drive.teledrive(.75,.75,0,0);
             }
             else{
@@ -293,7 +293,7 @@ public class Auto3 extends RR2_AutoBot {
         drive.resetEC();
         time.reset();
         while(opModeIsActive() && time.seconds()< 4 ){
-            if(sense.sideD()>4){
+            if(sense.sideD()>3){
                 drive.teledrive(-.75,-.75,0,0);
             }
             else if(sense.sideD()<2){
@@ -308,8 +308,8 @@ public class Auto3 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         time.reset();
-        while(opModeIsActive() && drive.fect()<1300){
-            if(sense.sideD()>4){
+        while(opModeIsActive() && drive.fect()<1000){
+            if(sense.sideD()>3){
                 drive.teledrive(-.25,-.5,0,0);
             }
             else if(sense.sideD()<2){
