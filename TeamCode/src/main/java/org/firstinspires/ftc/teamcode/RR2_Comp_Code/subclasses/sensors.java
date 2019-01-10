@@ -25,8 +25,8 @@ public class sensors {
 
     private final DistanceSensor Rd;
     private final DistanceSensor Sd;
-    private final DistanceSensor Fd;
-    private final DistanceSensor Bd;
+    //private final DistanceSensor Fd;
+    //private final DistanceSensor Bd;
     /*private final ColorSensor Rc;
     private final ColorSensor Lc;
     private final TouchSensor backtouch;
@@ -42,8 +42,8 @@ public class sensors {
     public sensors(LinearOpMode sense){
         Rd = sense.hardwareMap.get(DistanceSensor.class, "bd");
         Sd = sense.hardwareMap.get(DistanceSensor.class, "sd");
-        Fd = sense.hardwareMap.get(DistanceSensor.class, "frontd");
-        Bd = sense.hardwareMap.get(DistanceSensor.class, "backd");
+        //Fd = sense.hardwareMap.get(DistanceSensor.class, "frontd");
+        //Bd = sense.hardwareMap.get(DistanceSensor.class, "backd");
         /*Rc = sense.hardwareMap.colorSensor.get("rcd");
         Rd = sense.hardwareMap.opticalDistanceSensor.get("rcd");
         backtouch = sense.hardwareMap.touchSensor.get("backtouch");
@@ -77,12 +77,13 @@ public class sensors {
     public double sideD(){
         return (Sd.getDistance(DistanceUnit.INCH));
     }
+    /*
     public double frontD(){
         return (Fd.getDistance(DistanceUnit.INCH));
     }
     public double rearD(){
         return (Bd.getDistance(DistanceUnit.INCH));
-    }
+    }*/
     /*
     public double colorR(){
         return(Rc.blue());
@@ -119,8 +120,8 @@ public class sensors {
         sense.telemetry.addData("touch", touch());*/
         sense.telemetry.addData("sideD", sideD());
         sense.telemetry.addData("backD", backD());
-        sense.telemetry.addData("frontD", frontD());
-        sense.telemetry.addData("rearD", rearD());
+        //sense.telemetry.addData("frontD", frontD());
+        //sense.telemetry.addData("rearD", rearD());
 
         sense.telemetry.update();
     }

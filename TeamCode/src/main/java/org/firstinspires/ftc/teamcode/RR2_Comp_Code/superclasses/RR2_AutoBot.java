@@ -37,11 +37,14 @@ public abstract class RR2_AutoBot extends SuperSuperClass {
         vision = new MasterVision(parameters, hardwareMap, true, MasterVision.TFLiteAlgorithm.INFER_LEFT);
         vision.init();// enables the camera overlay. this will take a couple of seconds
         vision.enable();// enables the tracking algorithms. this might also take a little time
+        while(!isStarted() && !isStopRequested()){
+            telemetry.addData("goldPosition is r", vision.getTfLite().getLastKnownSampleOrder() == SampleRandomizedPositions.CENTER);
+            telemetry.addData("goldPosition is l", vision.getTfLite().getLastKnownSampleOrder() == SampleRandomizedPositions.LEFT);
+            telemetry.addData("goldPosition is c", vision.getTfLite().getLastKnownSampleOrder() == SampleRandomizedPositions.RIGHT);
+            telemetry.update();
 
-        telemetry.addData("goldPosition is c", goldPosition == SampleRandomizedPositions.CENTER);
-        telemetry.addData("goldPosition is l", goldPosition == SampleRandomizedPositions.LEFT);
-        telemetry.addData("goldPosition is R", goldPosition == SampleRandomizedPositions.RIGHT);
-        telemetry.update();
+        }
+
 
 
 

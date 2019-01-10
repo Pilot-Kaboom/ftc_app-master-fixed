@@ -45,13 +45,13 @@ public class Auto3 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         //hit the correct mineral
-        while (opModeIsActive() && doit && goldPosition == SampleRandomizedPositions.RIGHT){
+        while (opModeIsActive() && doit && goldPosition == SampleRandomizedPositions.CENTER){
             /*while(opModeIsActive() && drive.rect() < 50){
                 drive.goRight(.5);
                 drive.ECtelem();
             }*/
             telemetry.addData("do it", doit);
-            telemetry.addData("gold on right, saw r",1);
+            telemetry.addData("gold on right, saw C",1);
             telemetry.update();
             doit = false;
             drive.StopMotors(0);
@@ -60,7 +60,7 @@ public class Auto3 extends RR2_AutoBot {
             while(opModeIsActive() && drive.fect() < 1500){
                 drive.goForward(.5);
                 telemetry.addData("do it", doit);
-                telemetry.addData("gold on right, saw r",1);
+                telemetry.addData("gold on right, saw C",1);
                 telemetry.update();
 
             }
@@ -70,7 +70,7 @@ public class Auto3 extends RR2_AutoBot {
             while(opModeIsActive() && drive.lect() < 700){
                 drive.goRight(-.75);
                 telemetry.addData("do it", doit);
-                telemetry.addData("gold on right, saw r",1);
+                telemetry.addData("gold on right, saw C",1);
                 telemetry.update();
 
             }
@@ -80,7 +80,7 @@ public class Auto3 extends RR2_AutoBot {
             while(opModeIsActive() && drive.rect() < 700){
                 drive.goRight(.75);
                 telemetry.addData("do it", doit);
-                telemetry.addData("gold on right, saw L",1);
+                telemetry.addData("gold on right, saw C",1);
                 telemetry.update();
             }
 
@@ -89,7 +89,7 @@ public class Auto3 extends RR2_AutoBot {
             while(opModeIsActive() && drive.bect() < 2250){
                 drive.goForward(-.75);
                 telemetry.addData("do it", doit);
-                telemetry.addData("gold on right, saw r",1);
+                telemetry.addData("gold on right, saw C",1);
                 telemetry.update();
 
             }
@@ -148,22 +148,22 @@ public class Auto3 extends RR2_AutoBot {
             }
 
         }
-        while(opModeIsActive() && doit && goldPosition == SampleRandomizedPositions.CENTER){
+        while(opModeIsActive() && doit && goldPosition == SampleRandomizedPositions.RIGHT){
             /*while(opModeIsActive() && drive.rect() < 50){
                 drive.goRight(.5);
                 drive.ECtelem();
             }*/
             telemetry.addData("do it", doit);
-            telemetry.addData("gold on center, saw C",1);
+            telemetry.addData("gold on center, saw R",1);
             telemetry.update();
             doit = false;
             drive.StopMotors(0);
             drive.resetEC();
             sleep(500);
-            while(opModeIsActive() && drive.fect() < 300){
+            while(opModeIsActive() && drive.fect() < 200){
                 drive.goForward(.5);
                 telemetry.addData("do it", doit);
-                telemetry.addData("gold on center, saw C",1);
+                telemetry.addData("gold on center, saw R",1);
                 telemetry.update();
             }
             drive.StopMotors(0);
@@ -172,7 +172,7 @@ public class Auto3 extends RR2_AutoBot {
             while(opModeIsActive() && drive.lect() < 600){
                 drive.goRight(-.75);
                 telemetry.addData("do it", doit);
-                telemetry.addData("gold on center, saw C",1);
+                telemetry.addData("gold on center, saw R",1);
                 telemetry.update();
             }
             drive.StopMotors(0);
@@ -181,7 +181,7 @@ public class Auto3 extends RR2_AutoBot {
             while(opModeIsActive() && drive.rect() < 600){
                 drive.goRight(.75);
                 telemetry.addData("do it", doit);
-                telemetry.addData("gold on center, saw C",1);
+                telemetry.addData("gold on center, saw R",1);
                 telemetry.update();
             }
 
@@ -190,7 +190,7 @@ public class Auto3 extends RR2_AutoBot {
             while(opModeIsActive() && drive.bect() < 1500){
                 drive.goForward(-.75);
                 telemetry.addData("do it", doit);
-                telemetry.addData("gold on center, saw C",1);
+                telemetry.addData("gold on center, saw R",1);
                 telemetry.update();
             }
             drive.StopMotors(0);
@@ -260,7 +260,7 @@ public class Auto3 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         time.reset();
-        while(opModeIsActive() && time.seconds()< .53){
+        while(opModeIsActive() && time.seconds()< .59){
             drive.turnClockwise(-.75);
         }
         drive.StopMotors(0);
