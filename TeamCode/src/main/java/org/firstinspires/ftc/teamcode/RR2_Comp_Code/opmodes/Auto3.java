@@ -249,7 +249,7 @@ public class Auto3 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         time.reset();
-        while(opModeIsActive() && drive.bect()<1200){
+        while(opModeIsActive() && drive.bect()<1500){
             drive.teledrive(1,0,0,0);
             telemetry.addData("do it", doit);
             telemetry.addData("driving to wall",1);
