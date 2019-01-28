@@ -32,6 +32,7 @@ public class sensors {
     private final TouchSensor backtouch;
     private final OpticalDistanceSensor Ld;
     private final OpticalDistanceSensor Rd;*/
+    private final RevBlinkinLedDriver light;
     private final ColorSensor white;
     private final OpticalDistanceSensor whiteD;
     private final Servo dumper;
@@ -42,6 +43,7 @@ public class sensors {
     public sensors(LinearOpMode sense){
         Rd = sense.hardwareMap.get(DistanceSensor.class, "bd");
         Sd = sense.hardwareMap.get(DistanceSensor.class, "sd");
+        light = sense.hardwareMap.get(RevBlinkinLedDriver.class, "light");
         //Fd = sense.hardwareMap.get(DistanceSensor.class, "frontd");
         //Bd = sense.hardwareMap.get(DistanceSensor.class, "backd");
         /*Rc = sense.hardwareMap.colorSensor.get("rcd");
@@ -100,6 +102,18 @@ public class sensors {
     public boolean touch(){
         return (backtouch.isPressed());
     }*/
+    public void IAlight(double color, double timer){
+
+        light.setPattern(RevBlinkinLedDriver.BlinkinPattern.WHITE);
+    }
+    public void Alights(double color, double timer){
+
+        light.setPattern(RevBlinkinLedDriver.BlinkinPattern.CP1_2_COLOR_WAVES);
+    }
+    public void Tlight(double color, double timer){
+
+        light.setPattern(RevBlinkinLedDriver.BlinkinPattern.CP1_2_COLOR_WAVES);
+    }
     public double white(){
         return (white.blue()-4);
     }

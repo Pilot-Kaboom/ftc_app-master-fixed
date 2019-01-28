@@ -5,8 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.RR2_Comp_Code.superclasses.RR2_AutoBot;
 import org.firstinspires.ftc.teamcode.vision.SampleRandomizedPositions;
 
-@Autonomous(name="Auto3", group="Auto1")
-public class Auto3 extends RR2_AutoBot {
+@Autonomous(name="Auto4", group="Auto1")
+public class Auto4 extends RR2_AutoBot {
 
     @Override
     public void run() {
@@ -42,7 +42,7 @@ public class Auto3 extends RR2_AutoBot {
 
         }
         while(opModeIsActive() && time.seconds()<.1)
-        drive.StopMotors(0);
+            drive.StopMotors(0);
         drive.resetEC();
         //hit the correct mineral
         while (opModeIsActive() && doit && goldPosition == SampleRandomizedPositions.RIGHT){
@@ -271,15 +271,21 @@ public class Auto3 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         time.reset();
-        while(opModeIsActive() && time.seconds()<3){
+        while (opModeIsActive() && sense.sideD()>4){
+            drive.teledrive(0,-.75,0,0);
+        }
+        drive.StopMotors(0);
+        drive.resetEC();
+        time.reset();
+        while(opModeIsActive() && time.seconds()<2){
             if(sense.sideD()>4){
-                drive.teledrive(.75,-.75,0,0);
+                drive.teledrive(-.75,-.75,0,0);
             }
             else if(sense.sideD()<3){
-                drive.teledrive(.75,.75,0,0);
+                drive.teledrive(-.75,.75,0,0);
             }
             else{
-                drive.teledrive(.75,0,0,0);
+                drive.teledrive(-.75,0,0,0);
             }
             telemetry.addData("driving to depot",1);
             sense.sensortelem();
@@ -298,13 +304,13 @@ public class Auto3 extends RR2_AutoBot {
         time.reset();
         while(opModeIsActive() && time.seconds()< 4 ){
             if(sense.sideD()>3){
-                drive.teledrive(-.75,-.75,0,0);
+                drive.teledrive(.75,-.75,0,0);
             }
             else if(sense.sideD()<2){
-                drive.teledrive(-.75,.75,0,0);
+                drive.teledrive(.75,.75,0,0);
             }
             else{
-                drive.teledrive(-.75,0,0,0);
+                drive.teledrive(.75,0,0,0);
             }
             telemetry.addData("driving to crater",1);
             telemetry.update();
@@ -314,13 +320,13 @@ public class Auto3 extends RR2_AutoBot {
         time.reset();
         while(opModeIsActive() && drive.fect()<1000){
             if(sense.sideD()>3){
-                drive.teledrive(-.25,-.5,0,0);
+                drive.teledrive(.25,-.5,0,0);
             }
             else if(sense.sideD()<2){
-                drive.teledrive(-.25,.25,0,0);
+                drive.teledrive(.25,.25,0,0);
             }
             else{
-                drive.teledrive(-.25,0,0,0);
+                drive.teledrive(.25,0,0,0);
             }
             telemetry.addData("driving into crater",1);
             telemetry.update();

@@ -18,6 +18,8 @@ public abstract class RR2_AutoBot extends SuperSuperClass {
     public lift lifter;
     public sensors sense;
     public boolean doit;
+    public double landwait;
+    public double depotwait;
     public MasterVision vision;
     public SampleRandomizedPositions goldPosition;
 
@@ -40,11 +42,35 @@ public abstract class RR2_AutoBot extends SuperSuperClass {
 
         vision.enable();// enables the tracking algorithms. this might also take a little time
         while(!isStarted() && !isStopRequested()){
+            sense.IAlight(1, 1);
             telemetry.addData("goldPosition", vision.getTfLite().getLastKnownSampleOrder());
             telemetry.addData("goldPosition is c", vision.getTfLite().getLastKnownSampleOrder() == SampleRandomizedPositions.CENTER);
             telemetry.addData("goldPosition is l", vision.getTfLite().getLastKnownSampleOrder() == SampleRandomizedPositions.LEFT);
             telemetry.addData("goldPosition is r", vision.getTfLite().getLastKnownSampleOrder() == SampleRandomizedPositions.RIGHT);
+            telemetry.addData("landing wait is:", landwait);
+            telemetry.addData("depot wait is:", depotwait);
             telemetry.update();
+
+            if (gamepad1.right_bumper && atime.seconds() > .5){
+                landwait = landwait+1;
+                atime.reset();
+
+            }
+            else if (gamepad1.left_bumper && atime.seconds() > .5){
+                landwait = landwait-1;
+                atime.reset();
+
+            }
+            if (gamepad1.dpad_up && atime.seconds() > .5){
+                depotwait = depotwait+1;
+                atime.reset();
+
+            }
+            else if (gamepad1.dpad_down && atime.seconds() > .5){
+                depotwait = depotwait-1;
+                atime.reset();
+
+            }
 
         }
 
