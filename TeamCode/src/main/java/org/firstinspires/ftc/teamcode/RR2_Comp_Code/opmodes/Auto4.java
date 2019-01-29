@@ -77,7 +77,7 @@ public class Auto4 extends RR2_AutoBot {
             drive.StopMotors(0);
             drive.resetEC();
             sleep(500);
-            while(opModeIsActive() && drive.rect() < 850){
+            while(opModeIsActive() && drive.rect() < 950){
                 drive.goRight(.75);
                 telemetry.addData("do it", doit);
                 telemetry.addData("gold on right, saw R",1);
@@ -109,7 +109,7 @@ public class Auto4 extends RR2_AutoBot {
             drive.StopMotors(0);
             drive.resetEC();
             sleep(500);
-            while(opModeIsActive() && drive.bect() < 500){
+            while(opModeIsActive() && drive.bect() < 700){
                 drive.goForward(-.5);
                 telemetry.addData("do it", doit);
                 telemetry.addData("gold on left, saw L",1);
@@ -277,8 +277,8 @@ public class Auto4 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         time.reset();
-        collect.collect(-1);
-        while(opModeIsActive() && time.seconds()<2){
+
+        while(opModeIsActive() && time.seconds()<2.5){
             if(sense.sideD()>4){
                 drive.teledrive(-.75,-.75,0,0);
             }
@@ -296,10 +296,12 @@ public class Auto4 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         sense.teammarker(0);
+        collect.collect(-1);
         sleep(500);
         while(opModeIsActive() && time.seconds()< .25){
             drive.goForward(.75);
         }
+        collect.collect(0);
         drive.StopMotors(0);
         drive.resetEC();
         time.reset();
@@ -318,8 +320,8 @@ public class Auto4 extends RR2_AutoBot {
         }
         drive.StopMotors(0);
         drive.resetEC();
-        time.reset();
-        while(opModeIsActive() && drive.fect()<1000){
+        time.reset();/*
+        while(opModeIsActive() && drive.bect()<1000){
             if(sense.sideD()>3){
                 drive.teledrive(.25,-.5,0,0);
             }
@@ -331,7 +333,7 @@ public class Auto4 extends RR2_AutoBot {
             }
             telemetry.addData("driving into crater",1);
             telemetry.update();
-        }
+        }*/
         while(opModeIsActive()&& time.seconds() <.5){
             drive.teledrive(.5,-.5,0,0);
         }

@@ -21,10 +21,10 @@ public class TeleOp1 extends RR2_TeleBot {
             //arm
             //arm.hin(-gamepad2.left_stick_y+(gamepad2.left_trigger*.75)-(gamepad2.right_trigger*.4), sense.bucketDis(), gamepad2.left_bumper);
             arm.vin(-gamepad2.right_stick_y-(gamepad2.left_trigger*.35)+(gamepad2.right_trigger));
-            if(sense.bucketDis()>.55 && !gamepad2.left_bumper){
+            if(sense.bucketDis()>.32 && !gamepad2.left_bumper){
                 arm.hin(-gamepad2.left_stick_y+.4);
             }
-            else if (sense.bucketDis()<.45 && !gamepad2.left_bumper) {
+            else if (sense.bucketDis()<.27 && !gamepad2.left_bumper) {
                 arm.hin(-gamepad2.left_stick_y-.15);
             }
             else{
