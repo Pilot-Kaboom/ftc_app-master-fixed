@@ -28,7 +28,7 @@ public class Auto4 extends RR2_AutoBot {
         lifter.LiftOps(0);
         drive.resetEC();
         //move off of hook
-        while(opModeIsActive() && drive.bect() <300 ){
+        while(opModeIsActive() && drive.bect() <250 ){
             drive.goForward(-.5);
         }
         time.reset();
@@ -295,7 +295,7 @@ public class Auto4 extends RR2_AutoBot {
         time.reset();
         drive.StopMotors(0);
         drive.resetEC();
-        sense.teammarker(0);
+        //sense.teammarker(0);
         collect.collect(-1);
         sleep(500);
         while(opModeIsActive() && time.seconds()< .25){

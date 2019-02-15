@@ -39,12 +39,12 @@ public class TeleOp1 extends RR2_TeleBot {
             //lift
             lifter.LiftOpss(gamepad2.dpad_up || gamepad1.dpad_up, gamepad2.dpad_down || gamepad1.dpad_down);
             //collecter
-            collect.collect(-gamepad1.right_stick_y);
+            collect.collect(gamepad1.right_stick_y);
             collect.drop(gamepad2.right_bumper || gamepad1.right_bumper, gamepad2.left_bumper);
             //other stuff
             sense.sensortelem();
             sense.Tlight(1,1);
-            sense.teammarker(0);
+            //sense.teammarker(0);
 
         }
     }

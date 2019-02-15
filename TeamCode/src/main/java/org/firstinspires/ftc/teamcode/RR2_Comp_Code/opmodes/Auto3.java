@@ -288,7 +288,7 @@ public class Auto3 extends RR2_AutoBot {
         time.reset();
         drive.StopMotors(0);
         drive.resetEC();
-        sense.teammarker(0);
+        //sense.teammarker(0);
         sleep(500);
         while(opModeIsActive() && time.seconds()< .25){
             drive.goForward(.75);

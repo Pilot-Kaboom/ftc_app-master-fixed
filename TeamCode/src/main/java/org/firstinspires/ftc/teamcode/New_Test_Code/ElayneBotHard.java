@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.New_Test_Code;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
@@ -14,7 +15,7 @@ public abstract class ElayneBotHard extends superSuperClass {
     public DcMotor left;
     public DcMotor right;
 
-    public CRServo arm;
+    public Servo arm;
 
 
     @Override
@@ -23,7 +24,7 @@ public abstract class ElayneBotHard extends superSuperClass {
         left = hardwareMap.dcMotor.get("left");
         right = hardwareMap.dcMotor.get("right");
 
-        arm = hardwareMap.crservo.get("arm");
+        arm = hardwareMap.servo.get("arm");
 
         left.setDirection(DcMotorSimple.Direction.REVERSE);
 

@@ -35,7 +35,7 @@ public class sensors {
     private final RevBlinkinLedDriver light;
     private final ColorSensor white;
     private final OpticalDistanceSensor whiteD;
-    private final Servo dumper;
+    //private final Servo dumper;
 
    // private final BNO055IMU imu;
    // private Orientation angle;
@@ -53,7 +53,7 @@ public class sensors {
         Ld = sense.hardwareMap.opticalDistanceSensor.get("lcd");*/
         whiteD = sense.hardwareMap.opticalDistanceSensor.get("white");
         white = sense.hardwareMap.colorSensor.get("white");
-        dumper = sense.hardwareMap.servo.get("dumper");
+        //dumper = sense.hardwareMap.servo.get("dumper");
 
         /*
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
@@ -120,9 +120,9 @@ public class sensors {
     public double bucketDis(){
         return (whiteD.getLightDetected());
     }
-    public void teammarker(double pos){
-        dumper.setPosition(pos);
-    }
+    //public void teammarker(double pos){
+        //dumper.setPosition(pos);
+    //}
     public void sensortelem(){
         sense.telemetry.addData("white", white());
         sense.telemetry.addData("white dis", bucketDis());

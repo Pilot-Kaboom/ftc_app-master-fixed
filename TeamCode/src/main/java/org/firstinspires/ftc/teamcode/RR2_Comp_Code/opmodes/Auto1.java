@@ -355,12 +355,12 @@ public class Auto1 extends RR2_LiftBot {
         }
         drive.StopMotors(0);
         while(opModeIsActive() && time.seconds()<1){
-            sense.teammarker(.75);
+            //sense.teammarker(.75);
             drive.ECtelem();
             telemetry.addData("dumping TM", 1);
             telemetry.update();
         }
-        sense.teammarker(0);
+        //sense.teammarker(0);
         drive.StopMotors(0);
         drive.resetEC();
         /*
