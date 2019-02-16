@@ -33,8 +33,8 @@ public class sensors {
     private final OpticalDistanceSensor Ld;
     private final OpticalDistanceSensor Rd;*/
     private final RevBlinkinLedDriver light;
-    private final ColorSensor white;
-    private final OpticalDistanceSensor whiteD;
+    //private final ColorSensor white;
+    //private final OpticalDistanceSensor whiteD;
     //private final Servo dumper;
 
    // private final BNO055IMU imu;
@@ -51,8 +51,8 @@ public class sensors {
         backtouch = sense.hardwareMap.touchSensor.get("backtouch");
         Lc = sense.hardwareMap.colorSensor.get("lcd");
         Ld = sense.hardwareMap.opticalDistanceSensor.get("lcd");*/
-        whiteD = sense.hardwareMap.opticalDistanceSensor.get("white");
-        white = sense.hardwareMap.colorSensor.get("white");
+        //whiteD = sense.hardwareMap.opticalDistanceSensor.get("white");
+        //white = sense.hardwareMap.colorSensor.get("white");
         //dumper = sense.hardwareMap.servo.get("dumper");
 
         /*
@@ -114,18 +114,18 @@ public class sensors {
 
         light.setPattern(RevBlinkinLedDriver.BlinkinPattern.CP1_2_COLOR_WAVES);
     }
-    public double white(){
-        return (white.blue()-4);
-    }
-    public double bucketDis(){
-        return (whiteD.getLightDetected());
-    }
+    //public double white(){
+    //    return (white.blue()-4);
+    //}
+    //public double bucketDis(){
+      //  return (whiteD.getLightDetected());
+    //}
     //public void teammarker(double pos){
         //dumper.setPosition(pos);
     //}
     public void sensortelem(){
-        sense.telemetry.addData("white", white());
-        sense.telemetry.addData("white dis", bucketDis());
+        //sense.telemetry.addData("white", white());
+        //sense.telemetry.addData("white dis", bucketDis());
         /*
         sense.telemetry.addData("colorL", colorL());
         sense.telemetry.addData("colorR", colorR());

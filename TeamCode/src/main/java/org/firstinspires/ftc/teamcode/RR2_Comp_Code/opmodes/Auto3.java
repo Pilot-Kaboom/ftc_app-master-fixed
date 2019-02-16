@@ -279,6 +279,7 @@ public class Auto3 extends RR2_AutoBot {
                 drive.teledrive(.75,.75,0,0);
             }
             else{
+                collect.drop(true,false);
                 drive.teledrive(.75,0,0,0);
             }
             telemetry.addData("driving to depot",1);
@@ -288,6 +289,7 @@ public class Auto3 extends RR2_AutoBot {
         time.reset();
         drive.StopMotors(0);
         drive.resetEC();
+        collect.drop(true,false);
         //sense.teammarker(0);
         sleep(500);
         while(opModeIsActive() && time.seconds()< .25){
@@ -312,6 +314,7 @@ public class Auto3 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         time.reset();
+        collect.drop(false,true);
         while(opModeIsActive() && drive.fect()<1000){
             if(sense.sideD()>3){
                 drive.teledrive(-.25,-.5,0,0);
@@ -327,6 +330,43 @@ public class Auto3 extends RR2_AutoBot {
         }
         while(opModeIsActive()&& time.seconds() <.5){
             drive.teledrive(.5,-.5,0,0);
+        }
+        drive.StopMotors(0);
+        time.reset();
+        while(opModeIsActive() && time.seconds()<.65){
+            arm.hin(1);
+            arm.vin(1);
+
+        }
+        time.reset();
+        while(opModeIsActive() && time.seconds()<.7){
+            arm.hin(-1);
+            arm.vin(.65);
+        }
+        arm.hin(0);
+        arm.vin(0);
+        time.reset();
+        while(opModeIsActive() && time.seconds()<1){
+            collect.collect(1);
+            arm.hin(0);
+
+        }
+        time.reset();
+        while(opModeIsActive() && time.seconds()<.3){
+            collect.collect(1);
+            arm.hin(0);
+            drive.teledrive(0,0,.7,0);
+        }
+        drive.StopMotors(0);
+        time.reset();
+        while(opModeIsActive() && time.seconds()<2){
+            collect.collect(1);
+            arm.hin(0);
+
+        }
+        time.reset();
+        while(opModeIsActive() && time.seconds()<1){
+            collect.collect(1);
         }
     }
 

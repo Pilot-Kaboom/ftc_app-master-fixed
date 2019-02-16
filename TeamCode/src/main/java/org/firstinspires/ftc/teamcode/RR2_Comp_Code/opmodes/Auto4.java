@@ -296,7 +296,7 @@ public class Auto4 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         //sense.teammarker(0);
-        collect.collect(-1);
+        collect.drop(true,false);
         sleep(500);
         while(opModeIsActive() && time.seconds()< .25){
             drive.goForward(.75);
@@ -305,7 +305,7 @@ public class Auto4 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         time.reset();
-        while(opModeIsActive() && time.seconds()< 4 ){
+        while(opModeIsActive() && time.seconds()< 2.7 ){
             if(sense.sideD()>3){
                 drive.teledrive(.75,-.75,0,0);
             }
@@ -335,7 +335,48 @@ public class Auto4 extends RR2_AutoBot {
             telemetry.update();
         }*/
         while(opModeIsActive()&& time.seconds() <.5){
-            drive.teledrive(.5,-.5,0,0);
+            drive.teledrive(0,.5,0,0);
+        }
+        time.reset();
+        drive.StopMotors(0);
+        while (opModeIsActive() && time.seconds()< 1.75){
+            drive.teledrive(0,0,0,1);
+        }
+        drive.StopMotors(0);
+        time.reset();
+        while(opModeIsActive() && time.seconds()<.65){
+            arm.hin(1);
+            arm.vin(1);
+
+        }
+        time.reset();
+        while(opModeIsActive() && time.seconds()<.7){
+            arm.hin(-1);
+            arm.vin(.65);
+        }
+        arm.hin(0);
+        arm.vin(0);
+        time.reset();
+        while(opModeIsActive() && time.seconds()<1){
+            collect.collect(1);
+            arm.hin(0);
+
+        }
+        time.reset();
+        /*while(opModeIsActive() && time.seconds()<.3){
+            collect.collect(1);
+            arm.hin(0);
+            drive.teledrive(0,0,0,.70);
+        }*/
+        time.reset();
+        while(opModeIsActive() && time.seconds()<2){
+            collect.collect(1);
+            arm.hin(0);
+
+        }
+        time.reset();
+        while(opModeIsActive() && time.seconds()<1){
+            collect.collect(1);
         }
     }
 

@@ -20,8 +20,8 @@ public class collecter {
     }
     public void drop(boolean open, boolean closed){
         if(open){
-            dump.setPosition(.5);
-            dump2.setPosition(.5);
+            dump.setPosition(.4);
+            dump2.setPosition(.6);
         }
         else{
             dump.setPosition(1);

@@ -12,7 +12,7 @@ public class TeleOp1 extends RR2_TeleBot {
         while(opModeIsActive()){
             //drive
             if(gamepad1.left_bumper){
-                drive.teledrive(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_trigger*.5, gamepad1.left_trigger*.5);
+                drive.teledrive(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_trigger*.75, gamepad1.left_trigger*.75);
             }
             else{
                 drive.teledrive(-gamepad1.left_stick_y, -gamepad1.left_stick_x, gamepad1.right_trigger*.5, gamepad1.left_trigger*.5);
@@ -21,16 +21,16 @@ public class TeleOp1 extends RR2_TeleBot {
             //arm
             //arm.hin(-gamepad2.left_stick_y+(gamepad2.left_trigger*.75)-(gamepad2.right_trigger*.4), sense.bucketDis(), gamepad2.left_bumper);
             arm.vin(-gamepad2.right_stick_y-(gamepad2.left_trigger*.35)+(gamepad2.right_trigger));
-            if(sense.bucketDis()>.32 && !gamepad2.left_bumper){
+            /*if(sense.bucketDis()>.4 && !gamepad2.left_bumper){
                 arm.hin(-gamepad2.left_stick_y+.4);
             }
-            else if (sense.bucketDis()<.27 && !gamepad2.left_bumper) {
+            else if (sense.bucketDis()<.3 && !gamepad2.left_bumper) {
                 arm.hin(-gamepad2.left_stick_y-.15);
             }
             else{
-                arm.hin(-gamepad2.left_stick_y+.05);
-            }
 
+            }*/
+            arm.hin(-gamepad2.left_stick_y+.05);
             //arm.VposSet(gamepad2.right_stick_y,!gamepad2.a);
             //arm.HposSet(gamepad2.left_stick_y,!gamepad2.b,gamepad2.right_bumper);
             if(gamepad2.a){
