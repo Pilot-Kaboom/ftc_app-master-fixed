@@ -305,6 +305,7 @@ public class Auto4 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         time.reset();
+        collect.drop(false, true);
         while(opModeIsActive() && time.seconds()< 2.7 ){
             if(sense.sideD()>3){
                 drive.teledrive(.75,-.75,0,0);
@@ -339,16 +340,16 @@ public class Auto4 extends RR2_AutoBot {
         }
         time.reset();
         drive.StopMotors(0);
-        while (opModeIsActive() && time.seconds()< 1.75){
+        while (opModeIsActive() && time.seconds()< 1.6){
             drive.teledrive(0,0,0,1);
         }
         drive.StopMotors(0);
         time.reset();
         while(opModeIsActive() && time.seconds()<.65){
-            arm.hin(1);
             arm.vin(1);
 
-        }
+        }            arm.hin(1);
+
         time.reset();
         while(opModeIsActive() && time.seconds()<.7){
             arm.hin(-1);

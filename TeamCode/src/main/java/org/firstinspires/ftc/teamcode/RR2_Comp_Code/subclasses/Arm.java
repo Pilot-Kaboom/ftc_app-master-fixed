@@ -41,7 +41,7 @@ public class Arm {
     }*/
     public void vin(double vin){
 
-        vert.setPower(.15+vin);
+        vert.setPower(-.15-vin);
     }
 
     /*public void hin(double hin, double dis, boolean goit){
