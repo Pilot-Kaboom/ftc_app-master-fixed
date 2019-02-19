@@ -347,26 +347,26 @@ public class Auto3 extends RR2_AutoBot {
         arm.vin(0);
         time.reset();
         while(opModeIsActive() && time.seconds()<1){
-            collect.collect(1);
+            collect.collect(1, false, true);
             arm.hin(0);
 
         }
         time.reset();
         while(opModeIsActive() && time.seconds()<.3){
-            collect.collect(1);
+            collect.collect(1, false, true);
             arm.hin(0);
             drive.teledrive(0,0,.7,0);
         }
         drive.StopMotors(0);
         time.reset();
         while(opModeIsActive() && time.seconds()<2){
-            collect.collect(1);
+            collect.collect(1, false, true);
             arm.hin(0);
 
         }
         time.reset();
         while(opModeIsActive() && time.seconds()<1){
-            collect.collect(1);
+            collect.collect(1, false, true);
         }
     }
 

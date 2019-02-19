@@ -301,7 +301,7 @@ public class Auto4 extends RR2_AutoBot {
         while(opModeIsActive() && time.seconds()< .25){
             drive.goForward(.75);
         }
-        collect.collect(0);
+        collect.collect(0, false, true);
         drive.StopMotors(0);
         drive.resetEC();
         time.reset();
@@ -359,7 +359,7 @@ public class Auto4 extends RR2_AutoBot {
         arm.vin(0);
         time.reset();
         while(opModeIsActive() && time.seconds()<1){
-            collect.collect(1);
+            collect.collect(1, false, true);
             arm.hin(0);
 
         }
@@ -371,13 +371,13 @@ public class Auto4 extends RR2_AutoBot {
         }*/
         time.reset();
         while(opModeIsActive() && time.seconds()<2){
-            collect.collect(1);
+            collect.collect(1, false, true);
             arm.hin(0);
 
         }
         time.reset();
         while(opModeIsActive() && time.seconds()<1){
-            collect.collect(1);
+            collect.collect(1, false, true);
         }
     }
 
