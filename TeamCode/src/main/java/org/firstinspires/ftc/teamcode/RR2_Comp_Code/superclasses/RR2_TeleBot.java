@@ -15,6 +15,7 @@ public abstract class RR2_TeleBot extends SuperSuperClass {
     public lift lifter;
     public sensors sense;
     public boolean doit;
+    public boolean backwards;
 
     @Override
     public void initiate(){
@@ -23,5 +24,7 @@ public abstract class RR2_TeleBot extends SuperSuperClass {
         collect = new collecter(hardwareMap);
         lifter = new lift(hardwareMap);
         sense = new sensors(this);
+        collect.autoflap = false;
+        backwards=false;
     }
 }

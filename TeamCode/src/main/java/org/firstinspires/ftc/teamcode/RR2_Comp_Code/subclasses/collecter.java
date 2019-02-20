@@ -9,7 +9,7 @@ public class collecter {
     private final DcMotor intake;
     private final Servo dump;
     private final Servo dump2;
-    private boolean autoflap;
+    public boolean autoflap;
     public ElapsedTime ontime = new ElapsedTime();
 
     public collecter(HardwareMap col){
@@ -21,20 +21,20 @@ public class collecter {
     public void collect(double in, boolean on, boolean off){
 
         //intake.setPower(-in);
-        if(on && ontime.seconds()>.5){
-            ontime.reset();
+        if(on){
             autoflap=true;
+
         }
-        else if(off && ontime.seconds()>.5){
+        else if(off){
             autoflap=false;
-            ontime.reset();
+
 
         }
         if(autoflap){
             intake.setPower(-1);
         }
         else{
-            intake.setPower(0-in);
+            intake.setPower(-in);
         }
     }
     public void drop(boolean open, boolean closed){
