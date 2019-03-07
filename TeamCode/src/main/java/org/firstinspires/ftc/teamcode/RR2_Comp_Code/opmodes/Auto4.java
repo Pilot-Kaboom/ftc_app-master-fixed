@@ -348,15 +348,17 @@ public class Auto4 extends RR2_AutoBot {
         while(opModeIsActive() && time.seconds()<.65){
             arm.vin(1);
 
-        }            arm.hin(1);
-
+        }
+        arm.hin(1);
         time.reset();
         while(opModeIsActive() && time.seconds()<.7){
             arm.hin(-1);
             arm.vin(.65);
+            drive.teledrive(-.5,.5,0,0);
         }
         arm.hin(0);
         arm.vin(0);
+        drive.StopMotors(0);
         time.reset();
         while(opModeIsActive() && time.seconds()<1){
             collect.collect(1, false, true);
