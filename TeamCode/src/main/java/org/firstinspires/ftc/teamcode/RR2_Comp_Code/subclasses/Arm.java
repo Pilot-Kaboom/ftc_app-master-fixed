@@ -43,7 +43,9 @@ public class Arm {
 
         vert.setPower(-.15-vin);
     }
-
+    public void hin(double hin){
+        hori.setPower(hin+.05);
+    }
     /*public void hin(double hin, double dis, boolean goit){
 
         if(!goit && dis > .55){
@@ -57,10 +59,8 @@ public class Arm {
         }
 
 
-    }*/
-    public void hin(double hin){
-        hori.setPower(hin);
     }
+
     public void VposSet(double posset, boolean doit){
         pos = (pos + posset);
         if(doit){
@@ -94,13 +94,37 @@ public class Arm {
         else{
             hori.setPower(-Hpower());
         }
+    }*/
+    public void runtolander(){
+        if(vert.getCurrentPosition()>-2600){
+            vert.setPower(-1);
+        }
+        else if(vert.getCurrentPosition()>-2700&& vert.getCurrentPosition()<-2600){
+            vert.setPower(-.35);
+        }
+        else if(vert.getCurrentPosition()<-2750){
+            vert.setPower(0);
+        }
+        else{
+            vert.setPower(-.15);
+        }
+        if(hori.getCurrentPosition()<2300){
+            hori.setPower(1);
+        }
+        else if (hori.getCurrentPosition()>2300&&hori.getCurrentPosition()<2600){
+            hori.setPower(.25);
+
+        }
+        else{
+            hori.setPower(.05);
+        }
     }
     public void resetArmEc(){
         vert.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         hori.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         arm.idle();
-        vert.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        hori.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        vert.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        hori.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         arm.idle();
     }
     public void stopusingEC(){
@@ -111,12 +135,6 @@ public class Arm {
     public void Armtelem(){
         arm.telemetry.addData("vec", vert.getCurrentPosition());
         arm.telemetry.addData("HEc", hori.getCurrentPosition());
-        arm.telemetry.addData("Vpower", Vpower());
-        arm.telemetry.addData("HsetPos", HsetPos());
-        arm.telemetry.addData("Hpower", Hpower());
-        arm.telemetry.addData("HEc-othapos", more());
-        arm.telemetry.addData("othapos", othapos);
-        arm.telemetry.addData("pos", pos);
-        arm.telemetry.update();
+
     }
 }
