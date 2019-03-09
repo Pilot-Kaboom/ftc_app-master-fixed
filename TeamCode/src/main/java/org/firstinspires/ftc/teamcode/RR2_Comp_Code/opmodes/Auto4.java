@@ -296,7 +296,7 @@ public class Auto4 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         //sense.teammarker(0);
-        collect.drop(true,false);
+        collect.drop(true,false, false);
         sleep(500);
         while(opModeIsActive() && time.seconds()< .25){
             drive.goForward(.75);
@@ -305,7 +305,7 @@ public class Auto4 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         time.reset();
-        collect.drop(false, true);
+        collect.drop(false, true, false);
         while(opModeIsActive() && time.seconds()< 2.7 ){
             if(sense.sideD()>3){
                 drive.teledrive(.75,-.75,0,0);

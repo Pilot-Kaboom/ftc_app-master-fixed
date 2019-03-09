@@ -279,7 +279,7 @@ public class Auto3 extends RR2_AutoBot {
                 drive.teledrive(.75,.75,0,0);
             }
             else{
-                collect.drop(true,false);
+                collect.drop(true,false, false);
                 drive.teledrive(.75,0,0,0);
             }
             telemetry.addData("driving to depot",1);
@@ -289,7 +289,7 @@ public class Auto3 extends RR2_AutoBot {
         time.reset();
         drive.StopMotors(0);
         drive.resetEC();
-        collect.drop(true,false);
+        collect.drop(true,false, false);
         //sense.teammarker(0);
         sleep(500);
         while(opModeIsActive() && time.seconds()< .25){
@@ -314,7 +314,7 @@ public class Auto3 extends RR2_AutoBot {
         drive.StopMotors(0);
         drive.resetEC();
         time.reset();
-        collect.drop(false,true);
+        collect.drop(false,true, false);
         while(opModeIsActive() && drive.fect()<1000){
             if(sense.sideD()>3){
                 drive.teledrive(-.25,-.5,0,0);
