@@ -43,8 +43,14 @@ public class Arm {
 
         vert.setPower(-.15-vin);
     }
-    public void hin(double hin){
-        hori.setPower(hin+.05);
+    public void hin(double hin, boolean gofull){
+        if (gofull){
+            hori.setPower(hin+1);
+        }
+        else{
+            hori.setPower(hin+.05);
+        }
+
     }
     /*public void hin(double hin, double dis, boolean goit){
 
@@ -95,14 +101,14 @@ public class Arm {
             hori.setPower(-Hpower());
         }
     }*/
-    public void runtolander(){
-        if(vert.getCurrentPosition()>-2600){
+    public void runtolander(boolean gofull){
+        if(vert.getCurrentPosition()>-3250){
             vert.setPower(-1);
         }
-        else if(vert.getCurrentPosition()>-2700&& vert.getCurrentPosition()<-2600){
+        else if(vert.getCurrentPosition()>-3350&& vert.getCurrentPosition()<-3250){
             vert.setPower(-.35);
         }
-        else if(vert.getCurrentPosition()<-2750){
+        else if(vert.getCurrentPosition()<-3350){
             vert.setPower(0);
         }
         else{
@@ -112,11 +118,22 @@ public class Arm {
             hori.setPower(1);
         }
         else if (hori.getCurrentPosition()>2300&&hori.getCurrentPosition()<2600){
-            hori.setPower(.25);
+            if(gofull){
+                hori.setPower(1);
+            }
+            else{
+                hori.setPower(.25);
+            }
 
         }
         else{
-            hori.setPower(.05);
+            if(gofull){
+                hori.setPower(1);
+            }
+            else{
+                hori.setPower(.05);
+            }
+
         }
     }
     public void resetArmEc(){

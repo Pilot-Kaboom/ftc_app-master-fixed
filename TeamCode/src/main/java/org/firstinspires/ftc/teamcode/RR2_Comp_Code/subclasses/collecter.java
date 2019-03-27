@@ -37,22 +37,22 @@ public class collecter {
     }
     public void drop(boolean open, boolean half, boolean closed){
         if(open){
-            dump.setPosition(0);
-            dump2.setPosition(1);
+            dump.setPosition(.05);
+            dump2.setPosition(.95);
             ontime.reset();
         }
         else if (ishalf){
             dump.setPosition(.2);
             dump2.setPosition(.8);
         }
-        else if(ontime.seconds()<1){
-            dump.setPosition(.6);
-            dump2.setPosition(.4);
+        else if(ontime.seconds()<0){
+            dump.setPosition(.5);
+            dump2.setPosition(.5);
         }
 
         else{
-            dump.setPosition(.8);
-            dump2.setPosition(.2);
+            dump.setPosition(1);
+            dump2.setPosition(0);
         }
         if (half){
             ishalf = true;
