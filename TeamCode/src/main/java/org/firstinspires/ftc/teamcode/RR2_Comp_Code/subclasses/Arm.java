@@ -101,6 +101,41 @@ public class Arm {
             hori.setPower(-Hpower());
         }
     }*/
+    public void runtolandernear(boolean gofull){
+        if(vert.getCurrentPosition()>-3100){
+            vert.setPower(-1);
+        }
+        else if(vert.getCurrentPosition()>-3200&& vert.getCurrentPosition()<-3100){
+            vert.setPower(-.35);
+        }
+        else if(vert.getCurrentPosition()<-3200){
+            vert.setPower(0);
+        }
+        else{
+            vert.setPower(-.15);
+        }
+        if(hori.getCurrentPosition()<2300){
+            hori.setPower(1);
+        }
+        else if (hori.getCurrentPosition()>2300&&hori.getCurrentPosition()<2600){
+            if(gofull){
+                hori.setPower(1);
+            }
+            else{
+                hori.setPower(.25);
+            }
+
+        }
+        else{
+            if(gofull){
+                hori.setPower(1);
+            }
+            else{
+                hori.setPower(.05);
+            }
+
+        }
+    }
     public void runtolander(boolean gofull){
         if(vert.getCurrentPosition()>-3900){
             vert.setPower(-1);

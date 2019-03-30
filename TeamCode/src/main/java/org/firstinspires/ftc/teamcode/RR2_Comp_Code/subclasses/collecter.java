@@ -35,6 +35,32 @@ public class collecter {
             intake.setPower(-in);
         }
     }
+    public void dropnear(boolean open, boolean half, boolean closed){
+        if(open){
+            dump.setPosition(.4);
+            dump2.setPosition(.6);
+            ontime.reset();
+        }
+        else if (ishalf){
+            dump.setPosition(.6);
+            dump2.setPosition(.4);
+        }
+        else if(ontime.seconds()<0){
+            dump.setPosition(.5);
+            dump2.setPosition(.5);
+        }
+
+        else{
+            dump.setPosition(1);
+            dump2.setPosition(0);
+        }
+        if (half){
+            ishalf = true;
+        }
+        else if(open){
+            ishalf = false;
+        }
+    }
     public void drop(boolean open, boolean half, boolean closed){
         if(open){
             dump.setPosition(.05);

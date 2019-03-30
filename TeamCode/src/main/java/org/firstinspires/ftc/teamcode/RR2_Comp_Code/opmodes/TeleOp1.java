@@ -35,22 +35,35 @@ public class TeleOp1 extends RR2_TeleBot {
             else if(gamepad2.x){
                 arm.resetArmEc();
             }
-            if(gamepad2.right_trigger>.2){
-                arm.runtolander(gamepad1.right_bumper);
+            if (backwards){
+                if(gamepad2.right_trigger>.2){
+                    arm.runtolandernear(gamepad1.right_bumper);
+                }
+                else{
+                    arm.vin(-gamepad2.right_stick_y);
+                    arm.hin(-gamepad2.left_stick_y, gamepad1.right_bumper);
+                }
+                collect.drop(gamepad2.right_bumper || gamepad1.right_bumper, gamepad2.right_trigger>.2, !gamepad1.right_bumper);
             }
             else{
-                arm.vin(-gamepad2.right_stick_y);
-                arm.hin(-gamepad2.left_stick_y, gamepad1.right_bumper);
+                if(gamepad2.right_trigger>.2|| sense.mineraldetect()){
+                    arm.runtolander(gamepad1.right_bumper);
+                }
+                else{
+                    arm.vin(-gamepad2.right_stick_y);
+                    arm.hin(-gamepad2.left_stick_y, gamepad1.right_bumper);
+                }
+                collect.dropnear(gamepad2.right_bumper || gamepad1.right_bumper, gamepad2.right_trigger>.2, !gamepad1.right_bumper);
             }
+
             //lift
             lifter.LiftOpss(gamepad2.dpad_up || gamepad1.dpad_up, gamepad2.dpad_down || gamepad1.dpad_down);
             //collecter
             collect.collect(gamepad1.right_stick_y, gamepad1.y,gamepad1.right_bumper);
-            collect.drop(gamepad2.right_bumper || gamepad1.right_bumper, gamepad2.right_trigger>.2, !gamepad1.right_bumper);
+
             //other stuff
             arm.Armtelem();
             sense.sensortelem();
-            sense.Tlight(1,1);
             //sense.teammarker(0);
 
         }

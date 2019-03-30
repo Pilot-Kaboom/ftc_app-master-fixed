@@ -23,7 +23,7 @@ public class Auto4 extends RR2_AutoBot {
 
         while (opModeIsActive() && time.seconds() < 2.5){
             lifter.LiftOps(1);
-            sense.Alights(1,1);
+
         }
         lifter.LiftOps(0);
         drive.resetEC();

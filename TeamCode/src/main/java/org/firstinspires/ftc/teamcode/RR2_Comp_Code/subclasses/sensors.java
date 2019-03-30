@@ -11,6 +11,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.TouchSensor;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.PushbotAutoDriveByEncoder_Linear;
 import org.firstinspires.ftc.robotcontroller.external.samples.SensorREVColorDistance;
@@ -27,30 +28,30 @@ public class sensors {
     private final DistanceSensor Sd;
     //private final DistanceSensor Fd;
     //private final DistanceSensor Bd;
-    /*private final ColorSensor Rc;
-    private final ColorSensor Lc;
-    private final TouchSensor backtouch;
-    private final OpticalDistanceSensor Ld;
-    private final OpticalDistanceSensor Rd;*/
-    private final RevBlinkinLedDriver light;
+    private final ColorSensor fc;
+    private final ColorSensor bc;
+    private final OpticalDistanceSensor fd;
+    private final OpticalDistanceSensor bd;
+    //private final RevBlinkinLedDriver light;
     //private final ColorSensor white;
     //private final OpticalDistanceSensor whiteD;
     //private final Servo dumper;
-
+    private boolean stillmin;
    // private final BNO055IMU imu;
    // private Orientation angle;
+    private ElapsedTime mintime;
+    private ElapsedTime dumptime;
     private final LinearOpMode sense;
     public sensors(LinearOpMode sense){
         Rd = sense.hardwareMap.get(DistanceSensor.class, "bd");
         Sd = sense.hardwareMap.get(DistanceSensor.class, "sd");
-        light = sense.hardwareMap.get(RevBlinkinLedDriver.class, "light");
+        //light = sense.hardwareMap.get(RevBlinkinLedDriver.class, "light");
         //Fd = sense.hardwareMap.get(DistanceSensor.class, "frontd");
         //Bd = sense.hardwareMap.get(DistanceSensor.class, "backd");
-        /*Rc = sense.hardwareMap.colorSensor.get("rcd");
-        Rd = sense.hardwareMap.opticalDistanceSensor.get("rcd");
-        backtouch = sense.hardwareMap.touchSensor.get("backtouch");
-        Lc = sense.hardwareMap.colorSensor.get("lcd");
-        Ld = sense.hardwareMap.opticalDistanceSensor.get("lcd");*/
+        fc = sense.hardwareMap.colorSensor.get("fcd");
+        fd = sense.hardwareMap.opticalDistanceSensor.get("fcd");
+        bc = sense.hardwareMap.colorSensor.get("bcd");
+        bd = sense.hardwareMap.opticalDistanceSensor.get("bcd");
         //whiteD = sense.hardwareMap.opticalDistanceSensor.get("white");
         //white = sense.hardwareMap.colorSensor.get("white");
         //dumper = sense.hardwareMap.servo.get("dumper");
@@ -86,22 +87,36 @@ public class sensors {
     public double rearD(){
         return (Bd.getDistance(DistanceUnit.INCH));
     }*/
+
+    public double colorf(){
+        return(fc.red());
+    }
+    public double colorb(){
+        return(bc.red());
+    }
+    public double disb(){
+        return(bd.getLightDetected());
+    }
+    public double disf(){
+        return(fd.getLightDetected());
+    }
+    public boolean mineraldetect(){
+        if (colorb()<900||colorf()<900){
+            mintime.reset();
+        }
+        if(colorf()>900 && colorb()>900 && mintime.seconds()>.25){
+            dumptime.reset();
+            return (true);
+        }
+        else if (dumptime.seconds()<2){
+            return (true);
+        }
+        else{
+            return(false);
+        }
+    }
+    //Keith is cool and great and stuff. //
     /*
-    public double colorR(){
-        return(Rc.blue());
-    }
-    public double colorL(){
-        return(Lc.blue());
-    }
-    public double disL(){
-        return(Ld.getLightDetected());
-    }
-    public double disR(){
-        return(Rd.getLightDetected());
-    }
-    public boolean touch(){
-        return (backtouch.isPressed());
-    }*/
     public void IAlight(double color, double timer){
 
         light.setPattern(RevBlinkinLedDriver.BlinkinPattern.WHITE);
@@ -113,7 +128,7 @@ public class sensors {
     public void Tlight(double color, double timer){
 
         light.setPattern(RevBlinkinLedDriver.BlinkinPattern.CP1_2_COLOR_WAVES);
-    }
+    }*/
     //public double white(){
     //    return (white.blue()-4);
     //}
@@ -126,12 +141,11 @@ public class sensors {
     public void sensortelem(){
         //sense.telemetry.addData("white", white());
         //sense.telemetry.addData("white dis", bucketDis());
-        /*
-        sense.telemetry.addData("colorL", colorL());
-        sense.telemetry.addData("colorR", colorR());
-        sense.telemetry.addData("disL", disL());
-        sense.telemetry.addData("disR", disR());
-        sense.telemetry.addData("touch", touch());*/
+
+        sense.telemetry.addData("colorF", colorf());
+        sense.telemetry.addData("colorB", colorb());
+        sense.telemetry.addData("disF", disf());
+        sense.telemetry.addData("disB", disb());
         sense.telemetry.addData("sideD", sideD());
         sense.telemetry.addData("backD", backD());
         //sense.telemetry.addData("frontD", frontD());
