@@ -36,8 +36,11 @@ public class TeleOp1 extends RR2_TeleBot {
                 arm.resetArmEc();
             }
             if (backwards){
-                if(gamepad2.right_trigger>.2){
-                    arm.runtolandernear(gamepad1.right_bumper);
+                if (sense.mineraldetect()){
+                    mintime.reset();
+                }
+                if(gamepad2.right_trigger>.2|| mintime.seconds()<1.5){
+                    arm.runtolander(gamepad1.right_bumper);
                 }
                 else{
                     arm.vin(-gamepad2.right_stick_y);
@@ -46,8 +49,8 @@ public class TeleOp1 extends RR2_TeleBot {
                 collect.drop(gamepad2.right_bumper || gamepad1.right_bumper, gamepad2.right_trigger>.2, !gamepad1.right_bumper);
             }
             else{
-                if(gamepad2.right_trigger>.2|| sense.mineraldetect()){
-                    arm.runtolander(gamepad1.right_bumper);
+                if(gamepad2.right_trigger>.2){
+                    arm.runtolandernear(gamepad1.right_bumper);
                 }
                 else{
                     arm.vin(-gamepad2.right_stick_y);

@@ -39,8 +39,6 @@ public class sensors {
     private boolean stillmin;
    // private final BNO055IMU imu;
    // private Orientation angle;
-    private ElapsedTime mintime;
-    private ElapsedTime dumptime;
     private final LinearOpMode sense;
     public sensors(LinearOpMode sense){
         Rd = sense.hardwareMap.get(DistanceSensor.class, "bd");
@@ -101,20 +99,9 @@ public class sensors {
         return(fd.getLightDetected());
     }
     public boolean mineraldetect(){
-        if (colorb()<900||colorf()<900){
-            mintime.reset();
-        }
-        if(colorf()>900 && colorb()>900 && mintime.seconds()>.25){
-            dumptime.reset();
-            return (true);
-        }
-        else if (dumptime.seconds()<2){
-            return (true);
-        }
-        else{
-            return(false);
-        }
+        return (colorf()>900 && colorb()>900 );
     }
+
     //Keith is cool and great and stuff. //
     /*
     public void IAlight(double color, double timer){
