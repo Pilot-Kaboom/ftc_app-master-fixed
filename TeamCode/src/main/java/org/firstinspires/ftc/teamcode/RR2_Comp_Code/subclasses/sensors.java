@@ -28,10 +28,10 @@ public class sensors {
     private final DistanceSensor Sd;
     //private final DistanceSensor Fd;
     //private final DistanceSensor Bd;
-    private final ColorSensor fc;
+    /*private final ColorSensor fc;
     private final ColorSensor bc;
     private final OpticalDistanceSensor fd;
-    private final OpticalDistanceSensor bd;
+    private final OpticalDistanceSensor bd;*/
     //private final RevBlinkinLedDriver light;
     //private final ColorSensor white;
     //private final OpticalDistanceSensor whiteD;
@@ -46,10 +46,10 @@ public class sensors {
         //light = sense.hardwareMap.get(RevBlinkinLedDriver.class, "light");
         //Fd = sense.hardwareMap.get(DistanceSensor.class, "frontd");
         //Bd = sense.hardwareMap.get(DistanceSensor.class, "backd");
-        fc = sense.hardwareMap.colorSensor.get("fcd");
+        /*fc = sense.hardwareMap.colorSensor.get("fcd");
         fd = sense.hardwareMap.opticalDistanceSensor.get("fcd");
         bc = sense.hardwareMap.colorSensor.get("bcd");
-        bd = sense.hardwareMap.opticalDistanceSensor.get("bcd");
+        bd = sense.hardwareMap.opticalDistanceSensor.get("bcd");*/
         //whiteD = sense.hardwareMap.opticalDistanceSensor.get("white");
         //white = sense.hardwareMap.colorSensor.get("white");
         //dumper = sense.hardwareMap.servo.get("dumper");
@@ -85,7 +85,7 @@ public class sensors {
     public double rearD(){
         return (Bd.getDistance(DistanceUnit.INCH));
     }*/
-
+/*
     public double colorf(){
         return(fc.red());
     }
@@ -100,7 +100,7 @@ public class sensors {
     }
     public boolean mineraldetect(){
         return (colorf()>900 && colorb()>900 );
-    }
+    }*/
 
     //Keith is cool and great and stuff. //
     /*
@@ -128,11 +128,11 @@ public class sensors {
     public void sensortelem(){
         //sense.telemetry.addData("white", white());
         //sense.telemetry.addData("white dis", bucketDis());
-
+        /*
         sense.telemetry.addData("colorF", colorf());
         sense.telemetry.addData("colorB", colorb());
         sense.telemetry.addData("disF", disf());
-        sense.telemetry.addData("disB", disb());
+        sense.telemetry.addData("disB", disb());*/
         sense.telemetry.addData("sideD", sideD());
         sense.telemetry.addData("backD", backD());
         //sense.telemetry.addData("frontD", frontD());

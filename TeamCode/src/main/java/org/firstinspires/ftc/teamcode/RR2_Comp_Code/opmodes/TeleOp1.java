@@ -36,9 +36,9 @@ public class TeleOp1 extends RR2_TeleBot {
                 arm.resetArmEc();
             }
             if (backwards){
-                if (sense.mineraldetect()){
+                /*if (sense.mineraldetect()){
                     mintime.reset();
-                }
+                }*/
                 if(gamepad2.right_trigger>.2|| mintime.seconds()<1.5){
                     arm.runtolander(gamepad1.right_bumper);
                 }
@@ -62,7 +62,7 @@ public class TeleOp1 extends RR2_TeleBot {
             //lift
             lifter.LiftOpss(gamepad2.dpad_up || gamepad1.dpad_up, gamepad2.dpad_down || gamepad1.dpad_down);
             //collecter
-            collect.collect(gamepad1.right_stick_y, gamepad1.y,gamepad1.right_bumper);
+            collect.collect(gamepad1.right_stick_y, gamepad1.y,true);
 
             //other stuff
             arm.Armtelem();
