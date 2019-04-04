@@ -59,8 +59,8 @@ public class collecter {
             ontime.reset();
         }
         else if (ishalf){
-            dump.setPosition(.2);
-            dump2.setPosition(.8);
+            dump.setPosition(.3);
+            dump2.setPosition(.7);
         }
         else if(ontime.seconds()<0){
             dump.setPosition(.5);
