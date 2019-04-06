@@ -26,5 +26,16 @@ public abstract class RR2_TeleBot extends SuperSuperClass {
         sense = new sensors(this);
         collect.autoflap = false;
         backwards=false;
+        if (gamepad2.x){
+            arm.resetArmEc();
+        }
+        if (gamepad1.x && atime.seconds() > .5) {
+            backwards = !backwards;
+            atime.reset();
+
+        }
+        arm.Armtelem();
+        telemetry.addData("back", backwards);
+        telemetry.update();
     }
 }
