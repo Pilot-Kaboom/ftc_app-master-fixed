@@ -44,7 +44,7 @@ public class Auto5 extends RR2_AutoBot {
             sense.sensortelem();
 
         }
-        while (opModeIsActive() && Math.abs(gyro.getGyroY(AngleUnit.DEGREES))>4);
+
     }
 
 }
