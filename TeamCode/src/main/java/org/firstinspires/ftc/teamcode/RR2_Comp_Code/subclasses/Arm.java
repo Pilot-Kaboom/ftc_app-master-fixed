@@ -101,6 +101,33 @@ public class Arm {
             hori.setPower(-Hpower());
         }
     }*/
+    public double Vec(){
+        return vert.getCurrentPosition();
+    }
+
+    public double Hec() {
+        return hori.getCurrentPosition();
+    }
+    public void runToPos(double vpos, double hpos){
+        if (((vert.getCurrentPosition()-vpos)*-(1/150))<-1){
+            vert.setPower(-1);
+        }
+        else if (((vert.getCurrentPosition()-vpos)*-(1/150))>1){
+            vert.setPower(1);
+        }
+        else{
+            vert.setPower((vert.getCurrentPosition()-vpos)*-(1/150));
+        }
+        if (((hori.getCurrentPosition()-hpos)*-(1/150))<-1){
+            hori.setPower(-1);
+        }
+        else if (((hori.getCurrentPosition()-hpos)*-(1/150))>1){
+            hori.setPower(1);
+        }
+        else{
+            hori.setPower((hori.getCurrentPosition()-hpos)*-(1/150));
+        }
+    }
     public void runtolandernear(boolean gofull){
         if(vert.getCurrentPosition()>-2800){
             vert.setPower(-1);

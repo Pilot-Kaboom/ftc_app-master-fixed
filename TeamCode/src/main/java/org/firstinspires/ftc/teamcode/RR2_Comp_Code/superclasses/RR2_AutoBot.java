@@ -4,6 +4,7 @@ import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses.Arm;
 import org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses.Drive;
+import org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses.Gyro;
 import org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses.collecter;
 import org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses.lift;
 import org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses.sensors;
@@ -17,11 +18,13 @@ public abstract class RR2_AutoBot extends SuperSuperClass {
     public collecter collect;
     public lift lifter;
     public sensors sense;
+    public Gyro gyro;
     public boolean doit;
     public double landwait;
     public double depotwait;
     public MasterVision vision;
     public SampleRandomizedPositions goldPosition;
+
 
     @Override
     public void initiate(){
@@ -30,6 +33,7 @@ public abstract class RR2_AutoBot extends SuperSuperClass {
         collect = new collecter(hardwareMap);
         lifter = new lift(hardwareMap);
         sense = new sensors(this);
+        gyro = new Gyro(this);
         doit = true;
 
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
@@ -71,6 +75,7 @@ public abstract class RR2_AutoBot extends SuperSuperClass {
                 atime.reset();
 
             }
+            arm.resetArmEc();
 
         }
 
