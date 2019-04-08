@@ -9,8 +9,6 @@ public class Drive {
     private final DcMotor FLM;
     private final DcMotor BLM;
     private final DcMotor FRM;
-
-
     private final LinearOpMode adrive;
 
     public Drive(LinearOpMode adrive){

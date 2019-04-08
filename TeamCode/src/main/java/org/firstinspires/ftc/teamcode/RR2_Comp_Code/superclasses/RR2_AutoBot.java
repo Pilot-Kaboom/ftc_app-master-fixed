@@ -36,11 +36,11 @@ public abstract class RR2_AutoBot extends SuperSuperClass {
         parameters.cameraName = hardwareMap.get(WebcamName.class, "Webcam 1");// recommended camera direction
         parameters.vuforiaLicenseKey = "AYh5Avz/////AAABmcaUgF0Qc0IZgZolSSILtLp09gYOjB/jTLSa7BOfFrRXXFYruND/4Um7u78qpFbnLBgyDRxIiwVzYWgWuSxqTqDLAYAVQ/uhVXOB8/U7JYy1bR/ocZOWdS2qLv1AxgzPhk88PHW/QpzwTp6G9go5tvRrd/PIXhVTZUgm1bz62QeFLVV1bYKK5xrrBric2iBf/E3I7UlUbPoLxVviRkN9SHwAxIwQB6ovF/bJsRFwFHuMm+pYwzEsE0ns6nzDaUndC6TqHV4URbMKRKYSuqG2fd5nuDZynzPjLUg4i+JFDz8AdN1qXxvdgKKUruLxV+ULbCXHY4NEXEcMZ7SyAOECj732mMCYKBOIofIRI6BwV3Zj";
 
-
         vision = new MasterVision(parameters, hardwareMap, true, MasterVision.TFLiteAlgorithm.INFER_NONE);
         vision.init();// enables the camera overlay. this will take a couple of seconds
 
         vision.enable();// enables the tracking algorithms. this might also take a little time
+
         while(!isStarted() && !isStopRequested()){
 
             telemetry.addData("goldPosition", vision.getTfLite().getLastKnownSampleOrder());
