@@ -60,7 +60,7 @@ public class Gyro {
 
     }
     public void gyrotelem(){
-        gyro.telemetry.addData("Zdegrees",cutout(90,3));
+        gyro.telemetry.addData("cutout",cutout(90,3));
         gyro.telemetry.addData("Zdegrees",imuz());
         gyro.telemetry.addData("motorpower",imuP(90,1/20));
 
