@@ -26,6 +26,7 @@ public class sensors {
 
     private final DistanceSensor Rd;
     private final DistanceSensor Sd;
+    private final DistanceSensor Sd2;
     //private final DistanceSensor Fd;
     //private final DistanceSensor Bd;
     /*private final ColorSensor fc;
@@ -43,6 +44,7 @@ public class sensors {
     public sensors(LinearOpMode sense){
         Rd = sense.hardwareMap.get(DistanceSensor.class, "bd");
         Sd = sense.hardwareMap.get(DistanceSensor.class, "sd");
+        Sd2 = sense.hardwareMap.get(DistanceSensor.class, "sd2");
         //light = sense.hardwareMap.get(RevBlinkinLedDriver.class, "light");
         //Fd = sense.hardwareMap.get(DistanceSensor.class, "frontd");
         //Bd = sense.hardwareMap.get(DistanceSensor.class, "backd");
@@ -77,6 +79,9 @@ public class sensors {
     }
     public double sideD(){
         return (Sd.getDistance(DistanceUnit.INCH));
+    }
+    public double sideD2(){
+        return (Sd2.getDistance(DistanceUnit.INCH));
     }
     /*
     public double frontD(){
@@ -133,6 +138,7 @@ public class sensors {
         sense.telemetry.addData("colorB", colorb());
         sense.telemetry.addData("disF", disf());
         sense.telemetry.addData("disB", disb());*/
+        sense.telemetry.addData("sideD2", sideD2());
         sense.telemetry.addData("sideD", sideD());
         sense.telemetry.addData("backD", backD());
         //sense.telemetry.addData("frontD", frontD());

@@ -26,8 +26,10 @@ public class LiftTeleOp extends RR2_LiftBot {
                 drive.ECtelem();
             }
             else{
+                gyro.gyrotelem();
                 sense.sensortelem();
             }
+
 
 
 

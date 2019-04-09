@@ -34,9 +34,11 @@ public class Auto5 extends RR2_AutoBot {
         while(opModeIsActive() && drive.bect() <250 ){
             drive.goForward(-.5);
         }
+        drive.StopMotors(0);
         time.reset();
         while(opModeIsActive() && time.seconds()< .25+landwait){
             drive.StopMotors(0);
+            arm.hin(0,true);
         }
         //drive to minerals
         while(opModeIsActive() && sense.backD() < 12){
@@ -55,11 +57,12 @@ public class Auto5 extends RR2_AutoBot {
             doit = false;
             drive.StopMotors(0);
             drive.resetEC();
-            while (opModeIsActive() && !gyro.cutout(135,3)){
-                    drive.teledrive(0,0,0,gyro.imuP(135,1/20));
+            while (opModeIsActive() && !gyro.cutout(135,8)){
+                    drive.teledrive(0,0,0,gyro.imuP(135,.025));
             }
-            while (opModeIsActive() && arm.Hec()>-1000 && arm.Vec()<3000){
-                arm.runToPos(3000,-1000);
+            drive.StopMotors(0);
+            while (opModeIsActive() && arm.Hec()>-1000 && arm.Vec()>-3000){
+                arm.runToPos(-3000,-1000);
             }
         }
         while(opModeIsActive() && doit && goldPosition == SampleRandomizedPositions.CENTER) {
@@ -73,11 +76,12 @@ public class Auto5 extends RR2_AutoBot {
             doit = false;
             drive.StopMotors(0);
             drive.resetEC();
-            while (opModeIsActive() && !gyro.cutout(90,3)){
-                drive.teledrive(0,0,0,gyro.imuP(90,1/20));
+            while (opModeIsActive() && !gyro.cutout(90,8)){
+                drive.teledrive(0,0,0,gyro.imuP(90,.025));
             }
-            while (opModeIsActive() && arm.Hec()>-1000 && arm.Vec()<3000){
-                arm.runToPos(3000,-1000);
+            drive.StopMotors(0);
+            while (opModeIsActive() && arm.Hec()>-1000 && arm.Vec()>-1200){
+                arm.runToPos(-1200,-1000);
             }
         }
         while(opModeIsActive() && doit && goldPosition == SampleRandomizedPositions.RIGHT) {
@@ -91,11 +95,12 @@ public class Auto5 extends RR2_AutoBot {
             doit = false;
             drive.StopMotors(0);
             drive.resetEC();
-            while (opModeIsActive() && !gyro.cutout(45,3)){
-                drive.teledrive(0,0,0,gyro.imuP(45,1/20));
+            while (opModeIsActive() && !gyro.cutout(45,8)){
+                drive.teledrive(0,0,0,gyro.imuP(45,.025));
             }
-            while (opModeIsActive() && arm.Hec()>-1000 && arm.Vec()<3000){
-                arm.runToPos(3000,-1000);
+            drive.StopMotors(0);
+            while (opModeIsActive() && arm.Hec()>-2000 && arm.Vec()>-3000){
+                arm.runToPos(-3000,-1000);
             }
 
         }
@@ -103,9 +108,51 @@ public class Auto5 extends RR2_AutoBot {
         while(opModeIsActive() && time.seconds()<1.5){
             collect.collect(1,false,false);
         }
-        while (opModeIsActive() && !gyro.cutout(90,3)){
-
+        time.reset();
+        while (opModeIsActive() && !gyro.cutout(90,8) && arm.Vec()>-4000 && arm.Hec()>-2000){
+            while(opModeIsActive() &&time.seconds()<.5){
+                arm.runToPos(-4000,-2000);
+            }
+            while (opModeIsActive() &&time.seconds()>= .5){
+                drive.teledrive(0,0,0,gyro.imuP(90,.025));
+                arm.runToPos(-4000,-2000);
+            }
+            drive.StopMotors(0);
         }
+        drive.StopMotors(0);
+        time.reset();
+        while (opModeIsActive() && time.seconds()<.5){
+            collect.dropnear(true,false,false);
+        }
+        collect.dropnear(false,false,false);
+        time.reset();
+        while(opModeIsActive() && time.seconds()<2.5){
+            while(opModeIsActive() && arm.Hec()<1500){
+                arm.runtolander(false);
+                collect.drop(false,true,false);
+            }
+            while(opModeIsActive() && arm.Hec()>=1500){
+                arm.runtolander(false);
+                collect.drop(true,false,false);
+            }
+        }
+        while(opModeIsActive() && !gyro.cutout(225,8)){
+            arm.runToPos(1000,0);
+            drive.teledrive(0,0,0,gyro.imuP(225,.025));
+        }
+        drive.StopMotors(0);
+        while (opModeIsActive() && sense.sideD2()>4){
+            drive.teledrive(.75,.75,0,0);
+        }
+        drive.StopMotors(0);
+        drive.resetEC();
+        while(opModeIsActive() && drive.fect()<500){
+
+            drive.teledrive(.75,(sense.sideD2()-3)*.5,0,0);
+        }
+        drive.StopMotors(0);
+
     }
+
 
 }

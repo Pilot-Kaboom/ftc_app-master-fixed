@@ -53,7 +53,9 @@ public abstract class RR2_AutoBot extends SuperSuperClass {
             telemetry.addData("goldPosition is r", vision.getTfLite().getLastKnownSampleOrder() == SampleRandomizedPositions.RIGHT);
             telemetry.addData("landing wait is:", landwait);
             telemetry.addData("depot wait is:", depotwait);
-            telemetry.update();
+            gyro.gyrotelem();
+            sense.sensortelem();
+
 
             if (gamepad1.right_bumper && atime.seconds() > .5){
                 landwait = landwait+1;

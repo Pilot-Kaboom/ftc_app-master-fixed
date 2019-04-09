@@ -37,8 +37,8 @@ public class collecter {
     }
     public void dropnear(boolean open, boolean half, boolean closed){
         if(open){
-            dump.setPosition(.5);
-            dump2.setPosition(.5);
+            dump.setPosition(.35);
+            dump2.setPosition(.35);
             ontime.reset();
         }
         else{

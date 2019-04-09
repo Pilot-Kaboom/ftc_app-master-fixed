@@ -44,17 +44,26 @@ public class Gyro {
     }
     public double imuP(double target, double multiply){
         if ((imuz()-target)*-multiply>1){
-            return 1;
+            return .75;
         }
         else if ((imuz()-target)*-multiply<-1){
-            return -1;
+            return -.75;
         }
         else {
             return (imuz()-target)*-multiply;
         }
     }
     public boolean cutout(double target, double tolerance){
-        return imuz()-target<tolerance;
+        return Math.abs(imuz()-target)<(tolerance*.5);
+    }
+    public void resett(){
+
+    }
+    public void gyrotelem(){
+        gyro.telemetry.addData("Zdegrees",cutout(90,3));
+        gyro.telemetry.addData("Zdegrees",imuz());
+        gyro.telemetry.addData("motorpower",imuP(90,1/20));
+
     }
 
 }

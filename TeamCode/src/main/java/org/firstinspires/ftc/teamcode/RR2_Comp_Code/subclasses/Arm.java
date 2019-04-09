@@ -109,42 +109,42 @@ public class Arm {
         return hori.getCurrentPosition();
     }
     public void runToPos(double vpos, double hpos){
-        if (((vert.getCurrentPosition()-vpos)*-(1/150))<-1){
+        if ((vert.getCurrentPosition()-vpos)*-.005<-1){
             vert.setPower(-1);
         }
-        else if (((vert.getCurrentPosition()-vpos)*-(1/150))>1){
+        else if ((vert.getCurrentPosition()-vpos)*-.005>1){
             vert.setPower(1);
         }
         else{
-            vert.setPower((vert.getCurrentPosition()-vpos)*-(1/150));
+            vert.setPower((vert.getCurrentPosition()-vpos)*-.005);
         }
-        if (((hori.getCurrentPosition()-hpos)*-(1/150))<-1){
+        if (((hori.getCurrentPosition()-hpos)*-.005)<-1){
             hori.setPower(-1);
         }
-        else if (((hori.getCurrentPosition()-hpos)*-(1/150))>1){
+        else if (((hori.getCurrentPosition()-hpos)*-.005)>1){
             hori.setPower(1);
         }
         else{
-            hori.setPower((hori.getCurrentPosition()-hpos)*-(1/150));
+            hori.setPower((hori.getCurrentPosition()-hpos)*-.005);
         }
     }
     public void runtolandernear(boolean gofull){
-        if(vert.getCurrentPosition()>-2800){
+        if(vert.getCurrentPosition()>-4000){
             vert.setPower(-1);
         }
-        else if(vert.getCurrentPosition()>-2900&& vert.getCurrentPosition()<-2800){
+        else if(vert.getCurrentPosition()>-4100&& vert.getCurrentPosition()<-4000){
             vert.setPower(-.35);
         }
-        else if(vert.getCurrentPosition()<-2900){
+        else if(vert.getCurrentPosition()<-4100){
             vert.setPower(0);
         }
         else{
             vert.setPower(-.15);
         }
-        if(hori.getCurrentPosition()<1900){
+        if(hori.getCurrentPosition()<1100){
             hori.setPower(1);
         }
-        else if (hori.getCurrentPosition()>2000&&hori.getCurrentPosition()<1900){
+        else if (hori.getCurrentPosition()>1200&&hori.getCurrentPosition()<1100){
             hori.setPower(.25);
         }
         else{
@@ -152,22 +152,22 @@ public class Arm {
         }
     }
     public void runtolander(boolean gofull){
-        if(vert.getCurrentPosition()>-3900){
+        if(vert.getCurrentPosition()>-5100){
             vert.setPower(-1);
         }
-        else if(vert.getCurrentPosition()>-4000&& vert.getCurrentPosition()<-3900){
+        else if(vert.getCurrentPosition()>-5200&& vert.getCurrentPosition()<-5100){
             vert.setPower(-.35);
         }
-        else if(vert.getCurrentPosition()<-4000){
+        else if(vert.getCurrentPosition()<-5200){
             vert.setPower(0);
         }
         else{
             vert.setPower(-.15);
         }
-        if(hori.getCurrentPosition()<2300){
+        if(hori.getCurrentPosition()<1400){
             hori.setPower(1);
         }
-        else if (hori.getCurrentPosition()>2300&&hori.getCurrentPosition()<2600){
+        else if (hori.getCurrentPosition()>1500&&hori.getCurrentPosition()<1400){
             if(gofull){
                 hori.setPower(1);
             }
