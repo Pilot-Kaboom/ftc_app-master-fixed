@@ -46,7 +46,8 @@ public class TeleOp1 extends RR2_TeleBot {
                     arm.vin(-gamepad2.right_stick_y);
                     arm.hin(-gamepad2.left_stick_y, gamepad1.right_bumper);
                 }
-                collect.collect(gamepad1.right_stick_y, gamepad1.y,true);
+                collect.collect(gamepad1.right_stick_y, gamepad1.right_stick_y>.1 || gamepad1.right_stick_y<-.1,gamepad2.right_trigger>.2);
+
                 collect.drop(gamepad2.right_bumper || gamepad1.right_bumper, gamepad2.right_trigger>.2, !gamepad1.right_bumper);
             }
             else{

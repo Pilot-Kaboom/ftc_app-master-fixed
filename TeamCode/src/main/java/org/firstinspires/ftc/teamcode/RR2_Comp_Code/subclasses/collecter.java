@@ -21,23 +21,23 @@ public class collecter {
     }
     public void collect(double in, boolean on, boolean off){
 
-        intake.setPower(-in);
-        if(dump.getPosition()<.75 && !ishalf){
-            autoflap=true;
+        if(off){
+            intake.setPower(.15-in);
         }
         else{
-            autoflap=false;
+            if(!on && dump.getPosition()>.95){
+                intake.setPower(-in);
+            }
+            else{
+                intake.setPower(-in);
+            }
         }
-        if(autoflap){
-            intake.setPower(-.5);
-        }
-        else{
-            intake.setPower(-in);
-        }
+
+
     }
     public void dropnear(boolean open, boolean half, boolean closed){
         if(open){
-            dump.setPosition(.35);
+            dump.setPosition(.65);
             dump2.setPosition(.35);
             ontime.reset();
         }

@@ -152,13 +152,13 @@ public class Arm {
         }
     }
     public void runtolander(boolean gofull){
-        if(vert.getCurrentPosition()>-5100){
+        if(vert.getCurrentPosition()>-5250){
             vert.setPower(-1);
         }
-        else if(vert.getCurrentPosition()>-5200&& vert.getCurrentPosition()<-5100){
+        else if(vert.getCurrentPosition()>-5350&& vert.getCurrentPosition()<-5250){
             vert.setPower(-.35);
         }
-        else if(vert.getCurrentPosition()<-5200){
+        else if(vert.getCurrentPosition()<-5350){
             vert.setPower(0);
         }
         else{
