@@ -142,16 +142,15 @@ public class Auto5 extends RR2_AutoBot {
         }
         collect.collect(0,false,false);
         time.reset();
-        while (opModeIsActive() && !gyro.cutout(90,8) && arm.Vec()>-4200 && arm.Hec()>-2800){
+        while (opModeIsActive() && (!gyro.cutout(90,8) || arm.Vec()>-4500 || arm.Hec()>-3400)){
             while(opModeIsActive() &&time.seconds()<.5){
-                arm.runToPos(-4500,-3000);
+                arm.runToPos(-4800,-3600);
                 telemetry.addData("9",9);
                 telemetry.update();
             }
-
-            while (opModeIsActive() &&time.seconds()>= .5 && !gyro.cutout(90,8) && arm.Vec()>-4200 && arm.Hec()>-2800){
+            while (opModeIsActive()&& (!gyro.cutout(90,8) || arm.Vec()>-4500 || arm.Hec()>-3400)){
                 drive.teledrive(0,0,0,gyro.imuP(90,.025));
-                arm.runToPos(-4500,-3000);
+                arm.runToPos(-4800,-3600);
                 arm.Armtelem();
                 gyro.gyrotelem();
                 telemetry.addData("10",10);
