@@ -140,17 +140,17 @@ public class Auto5 extends RR2_AutoBot {
             telemetry.addData("8",8);
             telemetry.update();
         }
-        collect.collect(0,false,false);
+
         time.reset();
-        while (opModeIsActive() && (!gyro.cutout(90,8) || arm.Vec()>-4800 || arm.Hec()>-3700)){
+        while (opModeIsActive() && (!gyro.cutout(90,8) || arm.Vec()>-5400 || arm.Hec()>-3700)){
             while(opModeIsActive() &&time.seconds()<.5){
-                arm.runToPos(-5000,-3900);
+                arm.runToPos(-5600,-3900);
                 telemetry.addData("9",9);
                 telemetry.update();
             }
-            while (opModeIsActive()&& (!gyro.cutout(90,8) || arm.Vec()>-4800 || arm.Hec()>-3700)){
+            while (opModeIsActive()&& (!gyro.cutout(90,8) || arm.Vec()>-5400 || arm.Hec()>-3700)){
                 drive.teledrive(0,0,0,gyro.imuP(90,.025));
-                arm.runToPos(-5000,-3900);
+                arm.runToPos(-5600,-3900);
                 arm.Armtelem();
                 gyro.gyrotelem();
                 telemetry.addData("10",10);
@@ -160,7 +160,7 @@ public class Auto5 extends RR2_AutoBot {
             arm.hin(0,false);
             drive.StopMotors(0);
         }
-
+        collect.collect(0,false,false);
         drive.StopMotors(0);
         time.reset();
         while (opModeIsActive() && time.seconds()<.5){
@@ -170,45 +170,80 @@ public class Auto5 extends RR2_AutoBot {
         }
         collect.dropnear(false,false,false);
         time.reset();
-        while(opModeIsActive() && time.seconds()<2.5){
-            while(opModeIsActive() && arm.Hec()<400){
+        while(opModeIsActive() && time.seconds()<2.75){
+            while(opModeIsActive() && arm.Hec()<400&& time.seconds()<2.75){
                 arm.runToPos(-5350,500);
                 collect.drop(false,true,false);
                 telemetry.addData("12",12);
                 arm.Armtelem();
                 telemetry.update();
             }
-            while(opModeIsActive() && arm.Hec()>=400){
-                arm.runtolander(false);
+            arm.vin(0);
+            arm.hin(0,false);
+            while(opModeIsActive() && arm.Hec()>=400&& time.seconds()<2.75){
+                arm.runToPos(-5350,500);
                 collect.drop(true,false,false);
                 telemetry.addData("13",13);
                 arm.Armtelem();
                 telemetry.update();
             }
+            arm.vin(0);
+            arm.hin(0,false);
+        }
+        time.reset();
+        while (opModeIsActive() && time.seconds()<1){
+            drive.teledrive(0,0,0,.75);
         }
         collect.drop(false,false,false);
         while(opModeIsActive() && !gyro.cutout(-135,8)){
-            arm.runToPos(1000,0);
+            arm.runToPos(-2300,0);
             drive.teledrive(0,0, 0, gyro.imuP(-135,.025));
             telemetry.addData("14",14);
             gyro.gyrotelem();
             telemetry.update();
         }
+        arm.vin(0);
+        arm.hin(0,false);
         drive.StopMotors(0);
-        while (opModeIsActive() && sense.sideD2()>4){
-            drive.teledrive(.75,.75,0,0);
+        while (opModeIsActive() && sense.sideD2()>7){
+            drive.teledrive(-.5,.66,0,0);
             telemetry.addData("15",15);
             telemetry.update();
         }
         drive.StopMotors(0);
         drive.resetEC();
-        while(opModeIsActive() && drive.fect()<500){
-
-            drive.teledrive(.75,(sense.sideD2()-3)*.5,0,0);
+        while(opModeIsActive() && arm.Hec()>-3700){
+            arm.runToPos(-5600,-3900);
             telemetry.addData("16",16);
             telemetry.update();
         }
+        arm.vin(0);
+        arm.hin(0,false);
+        time.reset();
+        while(opModeIsActive() && time.seconds()<2){
+            collect.collect(1,false,false);
+        }
+        arm.runtolander(false);
+        time.reset();
+        while (opModeIsActive() && time.seconds()<.5){
+            drive.teledrive(0,-.25,.75,0);
+        }
+        while (opModeIsActive() && (!gyro.cutout(140,8) || arm.Vec()>-5400 || arm.Hec()>-3700) ){
+            drive.teledrive(0,0,0, gyro.imuP(140,.025));
+            arm.runtolander(false);
+        }
         drive.StopMotors(0);
+        arm.vin(0);
+        arm.hin(0,false);
+        time.reset();
+        while (opModeIsActive()&& time.seconds()<1){
+            drive.teledrive(.5,0,0,0);
+            collect.drop(false,true,false);
+        }
+        time.reset();
+        while (opModeIsActive() && time.seconds()<1){
+            collect.drop(true,false,false);
+        }
 
     }
 
