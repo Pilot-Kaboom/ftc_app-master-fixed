@@ -164,13 +164,14 @@ public class Auto5 extends RR2_AutoBot {
         drive.StopMotors(0);
         time.reset();
         while (opModeIsActive() && time.seconds()<.5){
-            collect.dropnear(true,false,false);
+            collect.dropnear(false,true,false);
             telemetry.addData("11",11);
             telemetry.update();
         }
-        collect.dropnear(false,false,false);
+        collect.collect(-.5,false,false);
+        collect.dropnear(false,true,false);
         time.reset();
-        while(opModeIsActive() && time.seconds()<2.75){
+        while(opModeIsActive() && time.seconds()<3){
             while(opModeIsActive() && arm.Hec()<400&& time.seconds()<3){
                 arm.runToPos(-5350,500);
                 collect.drop(false,true,false);
@@ -180,7 +181,7 @@ public class Auto5 extends RR2_AutoBot {
             }
             arm.vin(0);
             arm.hin(0,false);
-            while(opModeIsActive() && arm.Hec()>=400&& time.seconds()<2.75){
+            while(opModeIsActive() && arm.Hec()>=400&& time.seconds()<3){
                 arm.runToPos(-5350,500);
                 collect.drop(true,false,false);
                 telemetry.addData("13",13);
@@ -256,12 +257,13 @@ public class Auto5 extends RR2_AutoBot {
         collect.drop(false,false,false);
         time.reset();
         while(opModeIsActive() && time.seconds()<1){
-            arm.hin(-.2,false);
+
             arm.vin(-.08);
-            drive.teledrive(-.75,0,0,.3333);
+            drive.teledrive(-.75,0,0,.25);
         }
         while(opModeIsActive() && time.seconds()<2){
             arm.vin(-.08);
+            arm.hin(-.03,false);
         }
 
     }
