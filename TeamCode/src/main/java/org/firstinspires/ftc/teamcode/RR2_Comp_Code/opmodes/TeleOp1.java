@@ -21,10 +21,10 @@ public class TeleOp1 extends RR2_TeleBot {
             }
             else if (backwards){
                 if(arm.Hec()>500 || arm.Hec()<-2500){
-                    drive.teledrive(gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_trigger, gamepad1.left_trigger);
+                    drive.teledrive(gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_trigger*.5, gamepad1.left_trigger*.5);
                 }
                 else{
-                    drive.teledrive(gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_trigger*.5, gamepad1.left_trigger*.5);
+                    drive.teledrive(gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_trigger, gamepad1.left_trigger);
                 }
             }
             else{
