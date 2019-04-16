@@ -167,8 +167,9 @@ public class Auto5 extends RR2_AutoBot {
             collect.dropnear(false,true,false);
             telemetry.addData("11",11);
             telemetry.update();
+            collect.collect(-.5,false,false);
         }
-        collect.collect(-.5,false,false);
+        collect.collect(0,false,false);
         collect.dropnear(false,true,false);
         time.reset();
         while(opModeIsActive() && time.seconds()<3){
@@ -261,6 +262,7 @@ public class Auto5 extends RR2_AutoBot {
             arm.vin(-.08);
             drive.teledrive(-.75,0,0,.25);
         }
+        drive.StopMotors(0);
         while(opModeIsActive() && time.seconds()<2){
             arm.vin(-.08);
             arm.hin(-.03,false);
