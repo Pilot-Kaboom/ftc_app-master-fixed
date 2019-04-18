@@ -22,11 +22,11 @@ public class collecter {
     public void collect(double in, boolean on, boolean off){
 
         if(off){
-            intake.setPower(.15-in);
+            intake.setPower(-1);
         }
         else{
             if(!on && dump.getPosition()>.95){
-                intake.setPower(-in);
+                intake.setPower(-1);
             }
             else{
                 intake.setPower(-in);
@@ -54,13 +54,13 @@ public class collecter {
     }
     public void drop(boolean open, boolean half, boolean closed){
         if(open){
-            dump.setPosition(.05);
-            dump2.setPosition(.95);
+            dump.setPosition(.1);
+            dump2.setPosition(.90);
             ontime.reset();
         }
         else if (ishalf){
-            dump.setPosition(.3);
-            dump2.setPosition(.7);
+            dump.setPosition(.25);
+            dump2.setPosition(.75);
         }
         else if(ontime.seconds()<0){
             dump.setPosition(.5);
