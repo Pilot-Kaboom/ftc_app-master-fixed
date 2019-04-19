@@ -15,12 +15,13 @@ public class TeleOp1 extends RR2_TeleBot {
                 backwards = !backwards;
                 atime.reset();
 
+
             }
             if(gamepad1.left_bumper){
                 drive.teledrive(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_trigger*.75, gamepad1.left_trigger*.75);
             }
             else if (backwards){
-                if(arm.Hec()>500 || arm.Hec()<-2500){
+                if(gamepad1.a || gamepad1.b || gamepad1.y){
                     drive.teledrive(gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_trigger*.5, gamepad1.left_trigger*.5);
                 }
                 else{
@@ -62,7 +63,7 @@ public class TeleOp1 extends RR2_TeleBot {
                     arm.vin(-gamepad2.right_stick_y);
                     arm.hin(-gamepad2.left_stick_y, false);
                 }
-                collect.collect(gamepad1.right_stick_y, gamepad1.y,true);
+                collect.collectnear(gamepad1.right_stick_y, gamepad1.right_stick_y>.1 || gamepad1.right_stick_y<-.1,gamepad2.right_trigger>.2);
                 collect.dropnear(gamepad2.right_bumper || gamepad1.right_bumper, gamepad2.right_trigger>.2, !gamepad1.right_bumper);
             }
 

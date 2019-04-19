@@ -22,14 +22,46 @@ public class collecter {
     public void collect(double in, boolean on, boolean off){
 
         if(off){
-            intake.setPower(-1);
+            if(ontime.seconds()<1){
+                intake.setPower(-1);
+            }
+            else {
+                intake.setPower(.4);
+            }
         }
         else{
+            ontime.reset();
             if(!on && dump.getPosition()>.95){
                 intake.setPower(-1);
+                ontime.reset();
             }
             else{
                 intake.setPower(-in);
+                ontime.reset();
+            }
+        }
+
+
+    }
+    public void collectnear(double in, boolean on, boolean off){
+
+        if(off){
+            if(ontime.seconds()<.5){
+                intake.setPower(-1);
+            }
+            else {
+                intake.setPower(.05);
+            }
+        }
+        else{
+            ontime.reset();
+            if(!on && dump.getPosition()>.95){
+                intake.setPower(-1);
+                ontime.reset();
+            }
+            else{
+                intake.setPower(-in);
+                ontime.reset();
             }
         }
 
@@ -59,8 +91,8 @@ public class collecter {
             ontime.reset();
         }
         else if (ishalf){
-            dump.setPosition(.25);
-            dump2.setPosition(.75);
+            dump.setPosition(.3);
+            dump2.setPosition(.7);
         }
         else if(ontime.seconds()<0){
             dump.setPosition(.5);

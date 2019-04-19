@@ -56,9 +56,6 @@ public class Gyro {
     public boolean cutout(double target, double tolerance){
         return Math.abs(imuz()-target)<(tolerance*.5);
     }
-    public void resett(){
-
-    }
     public void gyrotelem(){
         gyro.telemetry.addData("cutout",cutout(90,3));
         gyro.telemetry.addData("Zdegrees",imuz());
