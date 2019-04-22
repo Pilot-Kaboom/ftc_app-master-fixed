@@ -16,6 +16,7 @@ public abstract class RR2_TeleBot extends SuperSuperClass {
     public sensors sense;
     public boolean doit;
     public boolean backwards;
+    public double othapos;
 
     @Override
     public void initiate(){

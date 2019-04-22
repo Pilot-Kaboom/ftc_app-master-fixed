@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.RR2_Comp_Code.superclasses.RR2_TeleBot;
 
-@TeleOp(name="tele1", group="Tele1")
-public class TeleOp1 extends RR2_TeleBot {
+@TeleOp(name="tele2", group="Tele1")
+public class TeleOp2 extends RR2_TeleBot {
 
     @Override
     public void run() {
@@ -44,33 +44,25 @@ public class TeleOp1 extends RR2_TeleBot {
                 /*if (sense.mineraldetect()){
                     mintime.reset();
                 }*/
-                if(gamepad2.right_trigger>.2|| mintime.seconds()<1.5){
+                if(gamepad2.right_trigger>.2|| mintime.seconds()<1.5 || gamepad1.a || gamepad1.b){
                     arm.runtolander(gamepad1.right_bumper);
                 }
-                else if (gamepad2.left_stick_y> .1|| gamepad2.left_stick_y <-.1 ){
-                    arm.vin(-gamepad2.right_stick_y);
-                    arm.hin(-gamepad2.left_stick_y, gamepad1.right_bumper);
-                }
                 else{
-                    arm.autohover(0,gamepad2.right_stick_y);
+                    arm.autohover(othapos,gamepad1.right_stick_y);
                 }
-                collect.collect(gamepad1.right_stick_y, gamepad1.right_stick_y>.1 || gamepad1.right_stick_y<-.1,gamepad2.right_trigger>.2);
+                collect.collect(gamepad1.right_stick_y, false,gamepad2.right_trigger>.2 || gamepad1.a || gamepad1.b);
 
-                collect.drop(gamepad2.right_bumper || gamepad1.right_bumper, gamepad2.right_trigger>.2, !gamepad1.right_bumper);
+                collect.drop(gamepad2.right_bumper || gamepad1.right_bumper, gamepad2.right_trigger>.2|| gamepad1.a || gamepad1.b, !gamepad1.right_bumper);
             }
             else{
-                if(gamepad2.right_trigger>.2){
+                if(gamepad2.right_trigger>.2|| gamepad1.a || gamepad1.b){
                     arm.runtolandernear(false);
                 }
-                else if (gamepad2.left_stick_y> .1|| gamepad2.left_stick_y <-.1 ){
-                    arm.vin(-gamepad2.right_stick_y);
-                    arm.hin(-gamepad2.left_stick_y, gamepad1.right_bumper);
-                }
                 else{
-                    arm.autohover(0,gamepad2.right_stick_y);
+                    arm.autohover(othapos,gamepad1.right_stick_y);
                 }
-                collect.collectnear(gamepad1.right_stick_y, gamepad1.right_stick_y>.1 || gamepad1.right_stick_y<-.1,gamepad2.right_trigger>.2);
-                collect.dropnear(gamepad2.right_bumper || gamepad1.right_bumper, gamepad2.right_trigger>.2, !gamepad1.right_bumper);
+                collect.collectnear(gamepad1.right_stick_y, false,gamepad2.right_trigger>.2|| gamepad1.a || gamepad1.b);
+                collect.dropnear(gamepad2.right_bumper || gamepad1.right_bumper, gamepad2.right_trigger>.2|| gamepad1.a || gamepad1.b, !gamepad1.right_bumper);
             }
 
             //lift
@@ -79,6 +71,18 @@ public class TeleOp1 extends RR2_TeleBot {
 
 
             //other stuff
+            if(gamepad1.dpad_right){
+                othapos = 0;
+            }
+            else if (gamepad1.right_stick_x>.5 && atime.seconds() > .05){
+                othapos = othapos+gamepad1.right_stick_x*2;
+                atime.reset();
+
+            }
+            else if (gamepad1.right_stick_x<.5 && atime.seconds() > .05){
+                othapos= othapos-gamepad1.right_stick_x*2;
+                atime.reset();
+            }
             arm.Armtelem();
             sense.sensortelem();
             //sense.teammarker(0);

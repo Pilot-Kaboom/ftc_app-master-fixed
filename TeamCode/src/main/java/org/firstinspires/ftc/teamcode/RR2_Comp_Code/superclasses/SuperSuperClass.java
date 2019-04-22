@@ -8,6 +8,7 @@ public abstract class SuperSuperClass extends LinearOpMode {
     public ElapsedTime time = new ElapsedTime();
     public ElapsedTime atime = new ElapsedTime();
     public ElapsedTime mintime = new ElapsedTime();
+    public ElapsedTime aatime = new ElapsedTime();
     @Override
     public void runOpMode() {
         initiate();

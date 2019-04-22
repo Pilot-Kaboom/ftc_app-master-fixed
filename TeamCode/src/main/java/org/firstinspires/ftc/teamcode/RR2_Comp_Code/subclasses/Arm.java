@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.RR2_Comp_Code.subclasses;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class Arm {
 
@@ -11,7 +12,6 @@ public class Arm {
 
     private double pos;
     private double othapos;
-
     private final LinearOpMode arm;
 
     public Arm(LinearOpMode arm){
@@ -135,20 +135,17 @@ public class Arm {
         else if(vert.getCurrentPosition()>-4100&& vert.getCurrentPosition()<-4000){
             vert.setPower(-.35);
         }
-        else if(vert.getCurrentPosition()<-4100){
-            vert.setPower(0);
-        }
         else{
             vert.setPower(-.15);
         }
-        if(hori.getCurrentPosition()<1100){
+        if(hori.getCurrentPosition()<1300){
             hori.setPower(1);
         }
-        else if (hori.getCurrentPosition()>1200&&hori.getCurrentPosition()<1100){
+        else if (hori.getCurrentPosition()>1400&&hori.getCurrentPosition()<1300){
             hori.setPower(.25);
         }
         else{
-            hori.setPower(.05);
+            hori.setPower(.15);
         }
     }
     public void runtolander(boolean gofull){
@@ -184,6 +181,21 @@ public class Arm {
                 hori.setPower(.05);
             }
 
+        }
+    }
+    public void autohover(double offset, double vgo){
+        vert.setPower(-.15+vgo);
+
+        pos = ((((vert.getCurrentPosition()+1200)*.6)+offset)-1000);
+
+        if (((hori.getCurrentPosition()-pos)*-.005)<-1){
+            hori.setPower(-75);
+        }
+        else if (((hori.getCurrentPosition()-pos)*-.005)>1){
+            hori.setPower(75);
+        }
+        else{
+            hori.setPower((hori.getCurrentPosition()-pos)*-.005);
         }
     }
     public void resetArmEc(){

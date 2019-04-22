@@ -22,7 +22,7 @@ public class collecter {
     public void collect(double in, boolean on, boolean off){
 
         if(off){
-            if(ontime.seconds()<1){
+            if(ontime.seconds()<.75){
                 intake.setPower(-1);
             }
             else {
@@ -44,13 +44,12 @@ public class collecter {
 
     }
     public void collectnear(double in, boolean on, boolean off){
-
         if(off){
             if(ontime.seconds()<.5){
                 intake.setPower(-1);
             }
             else {
-                intake.setPower(.05);
+                intake.setPower(.1);
             }
         }
         else{
