@@ -56,7 +56,7 @@ public class Auto5 extends RR2_AutoBot {
             telemetry.update();
             collect.drop(false,false,true);
         }
-        while(opModeIsActive() && sense.backD() < 14 && (goldPosition == SampleRandomizedPositions.RIGHT ||goldPosition == SampleRandomizedPositions.LEFT ) ){
+        while(opModeIsActive() && sense.backD() < 13 && (goldPosition == SampleRandomizedPositions.RIGHT ||goldPosition == SampleRandomizedPositions.LEFT ) ){
             drive.goRight(-.65);
             sense.sensortelem();
             telemetry.addData("4",4);
@@ -81,8 +81,8 @@ public class Auto5 extends RR2_AutoBot {
                 telemetry.update();
             }
             drive.StopMotors(0);
-            while (opModeIsActive() && arm.Hec()>-1800 && arm.Vec()>-2800){
-                arm.runToPos(-3000,-2000);
+            while (opModeIsActive() && arm.Hec()>-1700 && arm.Vec()>-1600){
+                arm.runToPos(-1400,-1900);
                 telemetry.addData("7",7);
                 arm.Armtelem();
                 telemetry.update();
@@ -100,8 +100,8 @@ public class Auto5 extends RR2_AutoBot {
             doit = false;
             drive.StopMotors(0);
             drive.resetEC();
-            while (opModeIsActive() && !gyro.cutout(85,8)){
-                drive.teledrive(0,0,0,gyro.imuP(85,.025));
+            while (opModeIsActive() && !gyro.cutout(82,8)){
+                drive.teledrive(0,0,0,gyro.imuP(82,.025));
                 telemetry.addData("6",6);
                 telemetry.update();
             }
@@ -190,7 +190,7 @@ public class Auto5 extends RR2_AutoBot {
         collect.drop(false,true,false);
         time.reset();
         drive.resetEC();
-        while(opModeIsActive() && drive.bect() <100){
+        while(opModeIsActive() && drive.bect() <150 && goldPosition == SampleRandomizedPositions.CENTER){
             drive.goForward(-.5);
             telemetry.addData("2",2);
             telemetry.update();
@@ -235,7 +235,7 @@ public class Auto5 extends RR2_AutoBot {
         arm.vin(0);
         arm.hin(0,false);
         drive.StopMotors(0);
-        while (opModeIsActive() && sense.sideD2()>7){
+        while (opModeIsActive() && sense.sideD2()>5){
             drive.teledrive(-.5,.77,0,0);
             telemetry.addData("15",15);
             telemetry.update();
@@ -252,34 +252,45 @@ public class Auto5 extends RR2_AutoBot {
         time.reset();
         while(opModeIsActive() && time.seconds()<1.5){
             collect.collect(1,true,false);
+            telemetry.addData("17",17);
+            telemetry.update();
         }
         time.reset();
         while (opModeIsActive() && time.seconds()<.5){
             collect.collect(-.2,false,true);
             arm.runtolander(false);
-
+            telemetry.addData("18",18);
+            telemetry.update();
         }
         time.reset();
         while (opModeIsActive() && time.seconds()<1){
             drive.teledrive(.25,-.25,.75,0);
+            telemetry.addData("19",19);
+            telemetry.update();
         }
-        while (atime.seconds()<28 && opModeIsActive() && (!gyro.cutout(147,8) || arm.Vec()>-5250 || arm.Hec()<1400) ){
+        while (atime.seconds()<28 && opModeIsActive() && (!gyro.cutout(147,8) || arm.Vec()>-5150 || arm.Hec()<1200) ){
             drive.teledrive(0,0,0, gyro.imuP(147,.025));
             arm.runtolander(false);
+            telemetry.addData("20",20);
+            telemetry.update();
         }
         drive.StopMotors(0);
         arm.vin(0);
         arm.hin(0,false);
         time.reset();
         while (atime.seconds()<28 &&opModeIsActive()&& time.seconds()<1){
-            drive.teledrive(.5,0,0,0);
+            drive.teledrive(.6,0,0,0);
             collect.drop(false,true,false);
             arm.runtolander(true);
+            telemetry.addData("21",21);
+            telemetry.update();
         }
         drive.StopMotors(0);
         time.reset();
         while (atime.seconds()<28 &&opModeIsActive() && time.seconds()<1){
             collect.drop(true,false,false);
+            telemetry.addData("22",22);
+            telemetry.update();
         }
         collect.drop(false,false,false);
         time.reset();
@@ -287,17 +298,23 @@ public class Auto5 extends RR2_AutoBot {
             drive.teledrive(0,0,0,gyro.imuP(135,.025));
             arm.vin(-.15);
             arm.hin(-.09,false);
+            telemetry.addData("23",23);
+            telemetry.update();
         }
         while(opModeIsActive() && time.seconds()<1.75){
             drive.teledrive(-1,0,0,.75);
-            arm.vin(-.145);
+            arm.vin(-.15);
             arm.hin(-.09,false);
+            telemetry.addData("24",24);
+            telemetry.update();
         }
         drive.StopMotors(0);
-        while(opModeIsActive() &&time.seconds()<2.5){
+        while(opModeIsActive() &&time.seconds()<2.5 ){
             drive.StopMotors(0);
-            arm.vin(-.145);
+            arm.vin(-.14);
             arm.hin(-.09,false);
+            telemetry.addData("25",25);
+            telemetry.update();
         }
         drive.StopMotors(0);
 

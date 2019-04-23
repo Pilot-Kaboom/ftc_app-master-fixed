@@ -47,13 +47,17 @@ public class TeleOp1 extends RR2_TeleBot {
                 if(gamepad2.right_trigger>.2|| mintime.seconds()<1.5){
                     arm.runtolander(gamepad1.right_bumper);
                 }
-                else if (gamepad2.left_stick_y> .1|| gamepad2.left_stick_y <-.1 ){
-                    arm.vin(-gamepad2.right_stick_y);
-                    arm.hin(-gamepad2.left_stick_y, gamepad1.right_bumper);
-                }
                 else{
-                    arm.autohover(0,gamepad2.right_stick_y);
+                    if(gamepad2.left_stick_y>.1){
+                        arm.autohover(0,gamepad2.right_stick_y);
+                    }
+                    else{
+                        arm.vin(-gamepad2.right_stick_y);
+                        arm.hin(-gamepad2.left_stick_y, gamepad1.right_bumper);
+                    }
+
                 }
+
                 collect.collect(gamepad1.right_stick_y, gamepad1.right_stick_y>.1 || gamepad1.right_stick_y<-.1,gamepad2.right_trigger>.2);
 
                 collect.drop(gamepad2.right_bumper || gamepad1.right_bumper, gamepad2.right_trigger>.2, !gamepad1.right_bumper);
@@ -62,12 +66,9 @@ public class TeleOp1 extends RR2_TeleBot {
                 if(gamepad2.right_trigger>.2){
                     arm.runtolandernear(false);
                 }
-                else if (gamepad2.left_stick_y> .1|| gamepad2.left_stick_y <-.1 ){
+                else {
                     arm.vin(-gamepad2.right_stick_y);
                     arm.hin(-gamepad2.left_stick_y, gamepad1.right_bumper);
-                }
-                else{
-                    arm.autohover(0,gamepad2.right_stick_y);
                 }
                 collect.collectnear(gamepad1.right_stick_y, gamepad1.right_stick_y>.1 || gamepad1.right_stick_y<-.1,gamepad2.right_trigger>.2);
                 collect.dropnear(gamepad2.right_bumper || gamepad1.right_bumper, gamepad2.right_trigger>.2, !gamepad1.right_bumper);

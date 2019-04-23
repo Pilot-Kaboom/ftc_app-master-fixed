@@ -76,12 +76,12 @@ public class TeleOp2 extends RR2_TeleBot {
             }
             else if (gamepad1.right_stick_x>.5 && atime.seconds() > .05){
                 othapos = othapos+gamepad1.right_stick_x*2;
-                atime.reset();
+                aatime.reset();
 
             }
             else if (gamepad1.right_stick_x<.5 && atime.seconds() > .05){
                 othapos= othapos-gamepad1.right_stick_x*2;
-                atime.reset();
+                aatime.reset();
             }
             arm.Armtelem();
             sense.sensortelem();
