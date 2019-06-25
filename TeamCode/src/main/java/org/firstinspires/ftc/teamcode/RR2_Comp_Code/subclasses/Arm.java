@@ -141,10 +141,10 @@ public class Arm {
         else{
             vert.setPower(-.15);
         }
-        if(hori.getCurrentPosition()<800){
+        if(hori.getCurrentPosition()<1000){
             hori.setPower(1);
         }
-        else if (hori.getCurrentPosition()>1000&&hori.getCurrentPosition()<800){
+        else if (hori.getCurrentPosition()>1200&&hori.getCurrentPosition()<1000){
             hori.setPower(.25);
         }
         else{
