@@ -132,16 +132,19 @@ public class Arm {
         if(vert.getCurrentPosition()>-4000){
             vert.setPower(-1);
         }
-        else if(vert.getCurrentPosition()>-4100&& vert.getCurrentPosition()<-4000){
+        else if(vert.getCurrentPosition()>-4250&& vert.getCurrentPosition()<-4000){
             vert.setPower(-.35);
+        }
+        else if(vert.getCurrentPosition()<-4250){
+            vert.setPower(-.05);
         }
         else{
             vert.setPower(-.15);
         }
-        if(hori.getCurrentPosition()<1300){
+        if(hori.getCurrentPosition()<800){
             hori.setPower(1);
         }
-        else if (hori.getCurrentPosition()>1400&&hori.getCurrentPosition()<1300){
+        else if (hori.getCurrentPosition()>1000&&hori.getCurrentPosition()<800){
             hori.setPower(.25);
         }
         else{

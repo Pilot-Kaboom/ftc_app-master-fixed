@@ -23,7 +23,7 @@ public class Auto6 extends RR2_AutoBot {
 
         drive.resetEC();
         //drop
-
+        atime.reset();
         while (opModeIsActive() && time.seconds() < 2.5){
             lifter.LiftOps(1);
             arm.runToPos(-1200,200);
@@ -47,9 +47,15 @@ public class Auto6 extends RR2_AutoBot {
             telemetry.addData("3",3);
             telemetry.update();
         }
-
         //drive to minerals
-        while(opModeIsActive() && sense.backD() < 12){
+        while(opModeIsActive() && sense.backD() < 10 && (goldPosition == SampleRandomizedPositions.CENTER)){
+            drive.goRight(-.65);
+            sense.sensortelem();
+            telemetry.addData("4",4);
+            telemetry.update();
+            collect.drop(false,false,true);
+        }
+        while(opModeIsActive() && sense.backD() < 12 && (goldPosition == SampleRandomizedPositions.RIGHT ||goldPosition == SampleRandomizedPositions.LEFT ) ){
             drive.goRight(-.65);
             sense.sensortelem();
             telemetry.addData("4",4);
@@ -74,8 +80,8 @@ public class Auto6 extends RR2_AutoBot {
                 telemetry.update();
             }
             drive.StopMotors(0);
-            while (opModeIsActive() && arm.Hec()>-1800 && arm.Vec()>-2800){
-                arm.runToPos(-3000,-2000);
+            while (opModeIsActive() && arm.Hec()>-1700 && arm.Vec()>-1600){
+                arm.runToPos(-1400,-1900);
                 telemetry.addData("7",7);
                 arm.Armtelem();
                 telemetry.update();
@@ -93,18 +99,28 @@ public class Auto6 extends RR2_AutoBot {
             doit = false;
             drive.StopMotors(0);
             drive.resetEC();
-            while (opModeIsActive() && !gyro.cutout(90,8)){
-                drive.teledrive(0,0,0,gyro.imuP(90,.025));
+            while (opModeIsActive() && !gyro.cutout(82,8)){
+                drive.teledrive(0,0,0,gyro.imuP(82,.025));
                 telemetry.addData("6",6);
                 telemetry.update();
             }
             drive.StopMotors(0);
-            while (opModeIsActive() && arm.Hec()>-800 && arm.Vec()>-1000){
-                arm.runToPos(-1200,-1000);
+            while (opModeIsActive() && arm.Hec()>-800){
+                arm.hin(-.75,false);
                 arm.Armtelem();
                 telemetry.addData("7",7);
                 telemetry.update();
             }
+            arm.hin(0,false);
+            drive.StopMotors(0);
+            drive.resetEC();
+            while(opModeIsActive() && drive.fect() <50){
+                drive.goForward(.5);
+                telemetry.addData("2",2);
+                telemetry.update();
+            }
+            drive.StopMotors(0);
+
         }
         while(opModeIsActive() && doit && goldPosition == SampleRandomizedPositions.RIGHT) {
             /*while(opModeIsActive() && drive.rect() < 50){
@@ -135,22 +151,21 @@ public class Auto6 extends RR2_AutoBot {
         arm.vin(0);
         arm.hin(0,false);
         time.reset();
-        while(opModeIsActive() && time.seconds()<1.5){
+        while(opModeIsActive() && time.seconds()<1){
             collect.collect(1,false,false);
             telemetry.addData("8",8);
             telemetry.update();
         }
-
         time.reset();
-        while (opModeIsActive() && (!gyro.cutout(90,8) || arm.Vec()>-5400 || arm.Hec()>-3700)){
+        while (opModeIsActive() && (!gyro.cutout(90,8) || arm.Vec()>-5600 || arm.Hec()>-3800)){
             while(opModeIsActive() &&time.seconds()<.5){
-                arm.runToPos(-5600,-3900);
+                arm.runToPos(-5800,-4000);
                 telemetry.addData("9",9);
                 telemetry.update();
             }
-            while (opModeIsActive()&& (!gyro.cutout(90,8) || arm.Vec()>-5400 || arm.Hec()>-3700)){
+            while (opModeIsActive()&& (!gyro.cutout(90,8) || arm.Vec()>-5600 || arm.Hec()>-3800)){
                 drive.teledrive(0,0,0,gyro.imuP(90,.025));
-                arm.runToPos(-5600,-3900);
+                arm.runToPos(-5800,-4000);
                 arm.Armtelem();
                 gyro.gyrotelem();
                 telemetry.addData("10",10);
@@ -160,20 +175,27 @@ public class Auto6 extends RR2_AutoBot {
             arm.hin(0,false);
             drive.StopMotors(0);
         }
-        collect.collect(0,false,false);
+        collect.collect(0,true,false);
         drive.StopMotors(0);
         time.reset();
-        while (opModeIsActive() && time.seconds()<.5){
-            collect.dropnear(false,true,false);
+        while (opModeIsActive() && time.seconds()<.25){
+            collect.drop(false,true,false);
             telemetry.addData("11",11);
             telemetry.update();
-            collect.collect(-.5,false,false);
+            collect.collect(.5,true,false);
         }
-        collect.collect(0,false,false);
-        collect.dropnear(false,true,false);
+        collect.collect(0,true,false);
+        collect.drop(false,true,false);
         time.reset();
-        while(opModeIsActive() && time.seconds()<3){
-            while(opModeIsActive() && arm.Hec()<400&& time.seconds()<3){
+        drive.resetEC();
+        while(opModeIsActive() && drive.bect() <150 && goldPosition == SampleRandomizedPositions.CENTER){
+            drive.goForward(-.5);
+            telemetry.addData("2",2);
+            telemetry.update();
+        }
+        drive.StopMotors(0);
+        while(opModeIsActive() && time.seconds()<4){
+            while(opModeIsActive() && arm.Hec()<200&& time.seconds()<4){
                 arm.runToPos(-5450,500);
                 collect.drop(false,true,false);
                 telemetry.addData("12",12);
@@ -182,7 +204,7 @@ public class Auto6 extends RR2_AutoBot {
             }
             arm.vin(0);
             arm.hin(0,false);
-            while(opModeIsActive() && arm.Hec()>=400&& time.seconds()<3){
+            while(opModeIsActive() && arm.Hec()>=200&& time.seconds()<4){
                 arm.runToPos(-5450,500);
                 collect.drop(true,false,false);
                 telemetry.addData("13",13);
@@ -200,7 +222,6 @@ public class Auto6 extends RR2_AutoBot {
             collect.drop(false,false,false);
             arm.runToPos(-2300,0);
         }
-
         while(opModeIsActive() && !gyro.cutout(-140,8)){
             arm.runToPos(-2300,0);
             drive.teledrive(0,0, 0, gyro.imuP(-140,.025));
@@ -211,62 +232,23 @@ public class Auto6 extends RR2_AutoBot {
         arm.vin(0);
         arm.hin(0,false);
         drive.StopMotors(0);
-        while (opModeIsActive() && sense.sideD2()>7){
-            drive.teledrive(-.5,.75,0,0);
+        while (opModeIsActive() && sense.sideD2()>5){
+            drive.teledrive(-.5,.64,0,0);
             telemetry.addData("15",15);
             telemetry.update();
         }
         drive.StopMotors(0);
         drive.resetEC();
-        while(opModeIsActive() && arm.Hec()>-3600){
-            arm.runToPos(-5600,-3800);
-            telemetry.addData("16",16);
-            telemetry.update();
-        }
-        arm.vin(0);
-        arm.hin(0,false);
         time.reset();
-        while(opModeIsActive() && time.seconds()<1.5){
-            collect.collect(1,false,false);
-        }
-        time.reset();
-        while (time.seconds()<.5){
-            collect.collect(-.2,false,false);
-            arm.runtolander(false);
-
-        }
-        time.reset();
-        while (opModeIsActive() && time.seconds()<1){
-            drive.teledrive(.25,-.25,.75,0);
-        }
-        while (opModeIsActive() && (!gyro.cutout(145,8) || arm.Vec()>-5250 || arm.Hec()<1400) ){
-            drive.teledrive(0,0,0, gyro.imuP(145,.025));
-            arm.runtolander(false);
+        while (opModeIsActive() && time.seconds()<.75){
+            drive.teledrive(-.75,.15,0,0);
+            arm.autohover(0,0);
         }
         drive.StopMotors(0);
-        arm.vin(0);
-        arm.hin(0,false);
-        time.reset();
-        while (opModeIsActive()&& time.seconds()<1){
-            drive.teledrive(.5,0,0,0);
-            collect.drop(false,true,false);
+        while(opModeIsActive()&& time.seconds()<3){
+            collect.collect(0,false,false);
         }
-        time.reset();
-        while (opModeIsActive() && time.seconds()<1){
-            collect.drop(true,false,false);
-        }
-        collect.drop(false,false,false);
-        time.reset();
-        while(opModeIsActive() && time.seconds()<1){
 
-            arm.vin(-.06);
-            drive.teledrive(-.75,0,0,.25);
-        }
-        drive.StopMotors(0);
-        while(opModeIsActive() && time.seconds()<2){
-            arm.vin(-.06);
-            arm.hin(-.03,false);
-        }
 
     }
 

@@ -49,14 +49,14 @@ public class Auto5 extends RR2_AutoBot {
         }
 
         //drive to minerals
-        while(opModeIsActive() && sense.backD() < 12 && goldPosition == SampleRandomizedPositions.CENTER){
+        while(opModeIsActive() && sense.backD() < 11 && (goldPosition == SampleRandomizedPositions.CENTER)){
             drive.goRight(-.65);
             sense.sensortelem();
             telemetry.addData("4",4);
             telemetry.update();
             collect.drop(false,false,true);
         }
-        while(opModeIsActive() && sense.backD() < 13 && (goldPosition == SampleRandomizedPositions.RIGHT ||goldPosition == SampleRandomizedPositions.LEFT ) ){
+        while(opModeIsActive() && sense.backD() < 12 && (goldPosition == SampleRandomizedPositions.RIGHT ||goldPosition == SampleRandomizedPositions.LEFT ) ){
             drive.goRight(-.65);
             sense.sensortelem();
             telemetry.addData("4",4);
@@ -236,7 +236,7 @@ public class Auto5 extends RR2_AutoBot {
         arm.hin(0,false);
         drive.StopMotors(0);
         while (opModeIsActive() && sense.sideD2()>5){
-            drive.teledrive(-.5,.77,0,0);
+            drive.teledrive(-.5,.64,0,0);
             telemetry.addData("15",15);
             telemetry.update();
         }
