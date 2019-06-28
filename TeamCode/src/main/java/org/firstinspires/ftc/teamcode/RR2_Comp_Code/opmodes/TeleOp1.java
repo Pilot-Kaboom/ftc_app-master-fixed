@@ -67,8 +67,13 @@ public class TeleOp1 extends RR2_TeleBot {
                     arm.runtolandernear(false);
                 }
                 else {
-                    arm.vin(-gamepad2.right_stick_y);
-                    arm.hin(-gamepad2.left_stick_y, false);
+                    if(gamepad2.left_stick_y>.1){
+                        arm.autohover(0,gamepad2.right_stick_y);
+                    }
+                    else{
+                        arm.vin(-gamepad2.right_stick_y);
+                        arm.hin(-gamepad2.left_stick_y,false);
+                    }
                 }
                 collect.collectnear(gamepad1.right_stick_y, gamepad1.right_stick_y>.1 || gamepad1.right_stick_y<-.1,gamepad2.right_trigger>.2);
                 collect.dropnear(gamepad2.right_bumper || gamepad1.right_bumper, gamepad2.right_trigger>.2, !gamepad1.right_bumper);
